@@ -1,0 +1,72 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\Usuario\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js install
+
+PATH: 
+  C:\Users\Usuario\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Usuario\bin;C:\Python312\Scripts;C:\Python312;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files\Microsoft SQL Server\150\Tools\Binn;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;C:\Program Files\Git\cmd;C:\Program Files\dotnet;C:\ProgramData\chocolatey\bin;C:\apache-maven-3.9.1\bin;C:\Program Files\nodejs;C:\Users\Usuario\AppData\Local\Microsoft\WindowsApps;C:\Users\Usuario\.dotnet\tools;D:\Microsoft VS Code\bin;C:\Users\Usuario\.fly\bin;C:\Users\Usuario\.dotnet\tools;C:\apache-maven-3.9.1\bin;C:\Users\Usuario\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Usuario\AppData\Roaming\npm;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  20.15.1
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/@angular/common/-/common-18.1.1.tgz: ESOCKETTIMEDOUT
+      at ClientRequest.<anonymous> (C:\Users\Usuario\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141517:19)
+      at Object.onceWrapper (node:events:633:28)
+      at ClientRequest.emit (node:events:519:28)
+      at TLSSocket.emitRequestTimeout (node:_http_client:845:9)
+      at Object.onceWrapper (node:events:633:28)
+      at TLSSocket.emit (node:events:531:35)
+      at Socket._onTimeout (node:net:590:8)
+      at listOnTimeout (node:internal/timers:573:17)
+      at process.processTimers (node:internal/timers:514:7)
+
+npm manifest: 
+  {
+    "name": "romina-celis.portfolio",
+    "version": "0.0.0",
+    "scripts": {
+      "ng": "ng",
+      "start": "ng serve",
+      "build": "ng build",
+      "watch": "ng build --watch --configuration development",
+      "test": "ng test"
+    },
+    "private": true,
+    "dependencies": {
+      "@angular/animations": "^18.1.0",
+      "@angular/common": "^18.1.0",
+      "@angular/compiler": "^18.1.0",
+      "@angular/core": "^18.1.0",
+      "@angular/forms": "^18.1.0",
+      "@angular/platform-browser": "^18.1.0",
+      "@angular/platform-browser-dynamic": "^18.1.0",
+      "@angular/router": "^18.1.0",
+      "rxjs": "~7.8.0",
+      "tslib": "^2.3.0",
+      "zone.js": "~0.14.3"
+    },
+    "devDependencies": {
+      "@angular-devkit/build-angular": "^18.1.1",
+      "@angular/cli": "^18.1.1",
+      "@angular/compiler-cli": "^18.1.0",
+      "@types/jasmine": "~5.1.0",
+      "jasmine-core": "~5.1.0",
+      "karma": "~6.4.0",
+      "karma-chrome-launcher": "~3.2.0",
+      "karma-coverage": "~2.2.0",
+      "karma-jasmine": "~5.1.0",
+      "karma-jasmine-html-reporter": "~2.1.0",
+      "typescript": "~5.5.2"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
