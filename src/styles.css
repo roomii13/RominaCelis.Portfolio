@@ -821,6 +821,7 @@ header .icons a {
     font-size: 4rem;
     margin-left: 10px;
     margin-right: 25px;
+    top:10px;
   }
 
   .descripcion {
