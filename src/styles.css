@@ -802,6 +802,8 @@ header .icons a {
   .skills-container {
     flex-direction: column;
     align-items: center;
+     margin-left: 10%;
+      width: 90%;
   }
 
   .container {
