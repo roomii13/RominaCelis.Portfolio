@@ -27,7 +27,7 @@ function App() {
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial check
+    handleScroll(); // Comprobacion inicial
     
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -43,7 +43,8 @@ function App() {
     { name: 'C++', icon: '⚡', level: 85, color: 'from-blue-400 to-purple-500' },
     { name: 'C#', icon: '💜', level: 80, color: 'from-purple-400 to-indigo-500' },
     { name: 'Java', icon: '☕', level: 85, color: 'from-orange-400 to-red-600' },
-    { name: 'SQL', icon: '🗄️', level: 88, color: 'from-green-400 to-blue-500' }
+    { name: 'SQL', icon: '🗄️', level: 88, color: 'from-green-400 to-blue-500' },
+     { name: 'Phyton', icon: '🔷', level: 40, color: 'from-red-500 to-pink-600' },
   ];
 
   const setSectionRef = (key: string) => (el: HTMLElement | null) => {
@@ -52,9 +53,9 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 overflow-x-hidden">
-      {/* Animated Background Elements */}
+      {/* Elementos animados de fondo */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        {/* Floating Stars */}
+        {/* estrellasflotantes*/}
         {[...Array(50)].map((_, i) => (
           <div
             key={i}
@@ -68,7 +69,7 @@ function App() {
           />
         ))}
         
-        {/* Moving Clouds */}
+        {/* nubes movedizas */}
         <div className="absolute top-20 left-0 w-full h-32 opacity-20">
           {[...Array(8)].map((_, i) => (
             <div
@@ -86,7 +87,7 @@ function App() {
           ))}
         </div>
         
-        {/* Large Moon */}
+        {/* luna */}
         <div 
           className="absolute top-32 right-20 w-32 h-32 bg-gradient-to-br from-yellow-200 to-yellow-400 rounded-full opacity-80 shadow-2xl"
           style={{
@@ -140,9 +141,9 @@ function App() {
         </div>
       </header>
 
-      {/* Main Content */}
+      {/* contenido */}
       <main className="pt-20 relative z-10">
-        {/* Hero Section */}
+        {/* Seccion Hero */}
         <section className="min-h-screen flex items-center justify-center relative">
           <div 
             className={`text-center transition-all duration-2000 ${
@@ -166,7 +167,7 @@ function App() {
           </div>
         </section>
 
-        {/* About Me Section */}
+        {/* seccion acerca de mi */}
         <section 
           ref={setSectionRef('about')}
           className={`py-20 transition-all duration-1000 ${
@@ -218,7 +219,7 @@ function App() {
                       />
                     </div>
                   </div>
-                  {/* Floating elements around photo */}
+                  {/* elementos flotantes alrededor de la foto */}
                   <div className="absolute -top-6 -right-6 w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full animate-bounce flex items-center justify-center">
                     <Code className="w-6 h-6 text-white" />
                   </div>
@@ -233,7 +234,7 @@ function App() {
           </div>
         </section>
 
-        {/* Skills Section */}
+        {/* Skills */}
         <section 
           ref={setSectionRef('skills')}
           className={`py-20 bg-black/20 backdrop-blur-sm transition-all duration-1000 ${
@@ -286,7 +287,7 @@ function App() {
           </div>
         </section>
 
-        {/* Projects Section */}
+        {/* seccion proyectos */}
         <section 
           ref={setSectionRef('projects')}
           className={`py-20 transition-all duration-1000 ${
@@ -365,7 +366,7 @@ function App() {
           </div>
         </section>
 
-        {/* Contact Section */}
+        {/* seccion contacto*/}
         <section 
           ref={setSectionRef('contact')}
           className={`py-20 bg-black/20 backdrop-blur-sm transition-all duration-1000 ${
@@ -414,7 +415,7 @@ function App() {
         </div>
       </footer>
 
-      {/* Scroll Progress Bar */}
+      {/* Scroll progresivo */}
       <div className="fixed top-0 left-0 w-full h-1 bg-gray-800 z-50">
         <div 
           className="h-full bg-gradient-to-r from-pink-400 via-purple-500 to-cyan-400 transition-all duration-300"
