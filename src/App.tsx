@@ -13,7 +13,6 @@ function App() {
     const handleScroll = () => {
       setScrollY(window.scrollY);
       
-      // Check which sections are visible
       const newVisibleSections = new Set<string>();
       Object.entries(sectionsRef.current).forEach(([key, element]) => {
         if (element) {
@@ -213,7 +212,7 @@ function App() {
                   <div className="w-80 h-80 rounded-full bg-gradient-to-br from-pink-400 via-purple-500 to-cyan-600 p-2 animate-pulse">
                     <div className="w-full h-full rounded-full bg-gray-900 flex items-center justify-center overflow-hidden">
                       <img 
-                        src="/src/assets/fotoPerfil.jpg" 
+                        src="/assets/fotoPerfil.jpg" 
                         alt="Romina Celis" 
                         className="w-full h-full object-cover rounded-full hover:scale-110 transition-transform duration-500"
                       />
@@ -344,7 +343,7 @@ function App() {
                     <div className="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
                     <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
                       <img 
-                        src="/src/assets/Captura de pantalla 2025-07-17 220822.jpg" 
+                        src="/assets/Captura de pantalla 2025-07-17 220822.jpg" 
                         alt="DentalSystem Screenshot 1" 
                         className="w-full h-48 object-cover rounded-xl"
                       />
@@ -354,7 +353,7 @@ function App() {
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
                     <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
                       <img 
-                        src="/src/assets/Captura de pantalla 2025-07-17 220850.jpg" 
+                        src="/assets/Captura de pantalla 2025-07-17 220850.jpg" 
                         alt="DentalSystem Screenshot 2" 
                         className="w-full h-48 object-cover rounded-xl"
                       />
