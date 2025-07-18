@@ -44,7 +44,7 @@ function App() {
     { name: 'C#', icon: '💜', level: 80, color: 'from-purple-400 to-indigo-500' },
     { name: 'Java', icon: '☕', level: 85, color: 'from-orange-400 to-red-600' },
     { name: 'SQL', icon: '🗄️', level: 88, color: 'from-green-400 to-blue-500' },
-     { name: 'Phyton', icon: '🔷', level: 40, color: 'from-red-500 to-pink-600' },
+     { name: 'Phyton', icon: '🐍', level: 40, color: 'from-red-500 to-pink-600' },
   ];
 
   const setSectionRef = (key: string) => (el: HTMLElement | null) => {
