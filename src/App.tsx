@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Heart, Instagram, Facebook, MessageCircle, Mail, ExternalLink, Code, Database, Smartphone, Monitor, Star, Moon, Cloud } from 'lucide-react';
+import fotoPerfil from './assets/fotoPerfil.jpg';
+import captura from './assets/captura_de_pantalla_2025-07-17_20220850.jpg';
+import captura from './assets/captura_de_pantalla_2025-07-17_20220850.jpg';
 
 
 function App() {
@@ -213,7 +216,7 @@ function App() {
                   <div className="w-80 h-80 rounded-full bg-gradient-to-br from-pink-400 via-purple-500 to-cyan-600 p-2 animate-pulse">
                     <div className="w-full h-full rounded-full bg-gray-900 flex items-center justify-center overflow-hidden">
                       <img 
-                        src="./assets/fotoPerfil.jpg" 
+                        src={fotoPerfil} 
                         alt="Romina Celis" 
                         className="w-full h-full object-cover rounded-full hover:scale-110 transition-transform duration-500"
                       />
@@ -352,8 +355,7 @@ function App() {
                   <div className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
                     <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
-                      <img 
-                         src="./assets/Captura de pantalla 2025-07-17 220850.jpg" alt="Captura de pantalla" 
+                      <img src={captura} alt="Captura de pantalla" 
                         className="w-full h-48 object-cover rounded-xl"
                       />
                     </div>
