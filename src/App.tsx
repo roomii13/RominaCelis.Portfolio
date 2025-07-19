@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Heart, Instagram, Facebook, MessageCircle, Mail, ExternalLink, Code, Database, Smartphone, Monitor, Star, Moon, Cloud } from 'lucide-react';
 import fotoPerfil from './assets/fotoPerfil.jpg';
-import captura from './assets/captura_de_pantalla_2025-07-17_20220850.jpg';
-import captura from './assets/captura_de_pantalla_2025-07-17_20220850.jpg';
+import captura from './assets/Captura_de_pantalla_2025-07-17_20220850.jpg';
+import captura1 from './assets/Captura de pantalla 2025-07-17 220822.jpg';
 
 
 function App() {
@@ -347,7 +347,7 @@ function App() {
                     <div className="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
                     <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
                       <img 
-                       src="./assets/Captura de pantalla 2025-07-17 20220850.jpg" alt="Captura de pantalla"                        
+                     src={captura1} alt="Captura de pantalla"                        
                         className="w-full h-48 object-cover rounded-xl"
                       />
                     </div>
