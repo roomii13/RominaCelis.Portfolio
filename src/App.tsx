@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Heart, Instagram, Facebook, MessageCircle, Mail, ExternalLink, Code, Database, Smartphone, Monitor, Star, Moon, Cloud } from 'lucide-react';
+import fotoperfil from './assets/fotoPerfil.jpg';  
 
 function App() {
   const [isVisible, setIsVisible] = useState(false);
