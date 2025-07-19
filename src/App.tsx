@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Heart, Instagram, Facebook, MessageCircle, Mail, ExternalLink, Code, Database, Smartphone, Monitor, Star, Moon, Cloud } from 'lucide-react';
 import fotoPerfil from './assets/fotoPerfil.jpg';
-import captura from './assets/Captura de pantalla 2025-07-17 20220850.jpg';
+import captura from './assets/Captura de pantalla 2025-07-17 220850.jpg';
 import captura1 from './assets/Captura de pantalla 2025-07-17 220822.jpg';
 
 
