@@ -343,7 +343,7 @@ function App() {
                     <div className="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
                     <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
                       <img 
-                        src="assets/Captura de pantalla 2025-07-17 220822.jpg" 
+                        src="/assets/Captura de pantalla 2025-07-17 220822.jpg" 
                         alt="DentalSystem Screenshot 1" 
                         className="w-full h-48 object-cover rounded-xl"
                       />
@@ -353,7 +353,7 @@ function App() {
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
                     <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
                       <img 
-                        src="assets/Captura de pantalla 2025-07-17 220850.jpg" 
+                        src="/assets/Captura de pantalla 2025-07-17 220850.jpg" 
                         alt="DentalSystem Screenshot 2" 
                         className="w-full h-48 object-cover rounded-xl"
                       />
