@@ -317,7 +317,9 @@ function App() {
                     DentalSystem
                   </h3>
                   <p className="text-gray-200 text-lg leading-relaxed">
-                    Aplicación web completa desarrollada con tecnologías modernas para la gestión de consultorios dentales. Sistema integral que optimiza el flujo de trabajo y mejora la experiencia del paciente.
+                    DentalSystem es una aplicación web diseñada específicamente para mecánicos dentales y laboratorios de prótesis, con el objetivo de optimizar la gestión de trabajos, 
+                    facturación y comunicación con dentistas. 
+                    La plataforma permite llevar un control detallado de los casos en proceso, pendientes y completos, mejorando la eficiencia y organización del flujo de trabajo.
                   </p>
                   
                   <div className="flex flex-wrap gap-3">
