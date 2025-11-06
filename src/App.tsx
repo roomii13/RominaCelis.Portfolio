@@ -3,6 +3,10 @@ import { Heart, Instagram, Facebook, MessageCircle, Mail, ExternalLink, Code, Da
 import fotoPerfil from './assets/fotoPerfil1.jpg';
 import captura from './assets/Captura de pantalla 2025-07-17 220850.jpg';
 import captura1 from './assets/Captura de pantalla 2025-07-17 220822.jpg';
+import chili1 from './assets/chili1.jpg';
+import chili2 from './assets/chili2.jpg';
+import vibras1 from './assets/vibras1.jpg';
+import vibras2 from './assets/vibras2.jpg';
 
 
 function App() {
@@ -358,6 +362,115 @@ function App() {
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
                     <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
                       <img src={captura} alt="Captura de pantalla" 
+                        className="w-full h-48 object-cover rounded-xl"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <br></br>
+               <div className="grid lg:grid-cols-2 gap-8 items-center">
+                <div className="space-y-6">
+                  <h3 className="text-3xl sm:text-4xl font-bold text-white mb-4 flex items-center">
+                    <Code className="w-10 h-10 mr-4 text-blue-400" />
+                    ChilliTattoo
+                  </h3>
+                  <p className="text-gray-200 text-lg leading-relaxed">
+                    ChilliTattoo es una aplicación web diseñada para un negocio online, con el objetivo de optimizar la venta de insumos y maquinas para tatuadores.  
+                    La plataforma permite llevar un control del stock, ingresando al sistema se permite subir fotos, descripcion y precios.
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-3">
+                    {['Html','Css', 'TypeScript', 'JavaScript'].map((tech) => (
+                      <span 
+                        key={tech}
+                        className="px-4 py-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-200 rounded-full text-sm border border-blue-400/30 hover:scale-105 transition-transform duration-300"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  
+                  <a 
+                    href="https://chillitattoo.netlify.app" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-600 text-white rounded-full hover:from-blue-600 hover:to-cyan-700 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-blue-500/25"
+                  >
+                    <ExternalLink className="w-5 h-5 mr-2" />
+                    Ver Proyecto
+                  </a>
+                </div>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="relative group">
+                    <div className="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
+                    <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
+                      <img 
+                     src={chili1} alt="Captura de pantalla"                        
+                        className="w-full h-48 object-cover rounded-xl"
+                      />
+                    </div>
+                  </div>
+                  <div className="relative group">
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
+                    <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
+                      <img src={chili2} alt="Captura" 
+                        className="w-full h-48 object-cover rounded-xl"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br></br>
+              <div className="grid lg:grid-cols-2 gap-8 items-center">
+                <div className="space-y-6">
+                  <h3 className="text-3xl sm:text-4xl font-bold text-white mb-4 flex items-center">
+                    <Code className="w-10 h-10 mr-4 text-blue-400" />
+                    Vibras
+                  </h3>
+                  <p className="text-gray-200 text-lg leading-relaxed">
+                    vibrasimp es una aplicación web diseñada para un negocio online, con el objetivo de optimizar la venta de calzado de una pequeña empresa.  
+                    La plataforma permite llevar un control del stock, ingresando al sistema se permite subir fotos, descripcion y precios.
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-3">
+                    {['Html','Css', 'TypeScript', 'JavaScript'].map((tech) => (
+                      <span 
+                        key={tech}
+                        className="px-4 py-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-200 rounded-full text-sm border border-blue-400/30 hover:scale-105 transition-transform duration-300"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  
+                  <a 
+                    href="https://vibrasimp.netlify.app" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-600 text-white rounded-full hover:from-blue-600 hover:to-cyan-700 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-blue-500/25"
+                  >
+                    <ExternalLink className="w-5 h-5 mr-2" />
+                    Ver Proyecto
+                  </a>
+                </div>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="relative group">
+                    <div className="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
+                    <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
+                      <img 
+                     src={vibras1} alt="Captura de pantalla"                        
+                        className="w-full h-48 object-cover rounded-xl"
+                      />
+                    </div>
+                  </div>
+                  <div className="relative group">
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
+                    <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
+                      <img src={vibras2} alt="Captura" 
                         className="w-full h-48 object-cover rounded-xl"
                       />
                     </div>
