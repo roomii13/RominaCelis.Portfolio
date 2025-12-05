@@ -1,0 +1,1715 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Calculadora VLSM Professional</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root {
+    --primary: #0ea5a4;
+    --primary-dark: #0d9488;
+    --secondary: #3b82f6;
+    --danger: #ef4444;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --dark: #0f172a;
+    --light: #f8fafc;
+    --gray: #64748b;
+    --border: #e2e8f0;
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    margin: 0;
+    background: linear-gradient(135deg, #f6f8fb 0%, #eef2ff 100%);
+    color: var(--dark);
+    min-height: 100vh;
+    padding: 20px;
+  }
+  
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding: 16px 24px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(12, 24, 60, 0.08);
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .logo i {
+    color: var(--primary);
+    font-size: 28px;
+  }
+  
+  .logo h1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+  }
+  
+  .logo span {
+    color: var(--primary);
+  }
+  
+  .version {
+    background: var(--primary);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  
+  /* Main Layout */
+  .main-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  
+  @media (max-width: 1024px) {
+    .main-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Cards */
+  .card {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 6px 20px rgba(12, 24, 60, 0.08);
+    height: 100%;
+  }
+  
+  .card-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .card-title i {
+    color: var(--primary);
+  }
+  
+  /* Form Styles */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--dark);
+    font-size: 14px;
+  }
+  
+  .label-help {
+    color: var(--gray);
+    font-weight: normal;
+    font-size: 13px;
+  }
+  
+  input, textarea, select {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    font-size: 14px;
+    font-family: inherit;
+    transition: all 0.3s;
+  }
+  
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(14, 165, 164, 0.1);
+  }
+  
+  textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+  
+  /* Buttons */
+  .btn {
+    padding: 12px 24px;
+    border-radius: 10px;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s;
+    font-family: inherit;
+  }
+  
+  .btn-primary {
+    background: var(--primary);
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(14, 165, 164, 0.2);
+  }
+  
+  .btn-secondary {
+    background: var(--secondary);
+    color: white;
+  }
+  
+  .btn-secondary:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+  }
+  
+  .btn-outline {
+    background: transparent;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+  }
+  
+  .btn-outline:hover {
+    background: rgba(14, 165, 164, 0.1);
+  }
+  
+  .btn-danger {
+    background: var(--danger);
+    color: white;
+  }
+  
+  .btn-danger:hover {
+    background: #dc2626;
+  }
+  
+  .btn-sm {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+  
+  .btn-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  /* Tabs */
+  .tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .tab {
+    padding: 12px 20px;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--gray);
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s;
+  }
+  
+  .tab.active {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+  }
+  
+  .tab:hover:not(.active) {
+    color: var(--dark);
+  }
+  
+  .tab-content {
+    display: none;
+  }
+  
+  .tab-content.active {
+    display: block;
+  }
+  
+  /* Table */
+  .table-container {
+    overflow-x: auto;
+    margin-top: 20px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  
+  th {
+    background: #f1fbfb;
+    color: var(--dark);
+    font-weight: 700;
+    padding: 14px 12px;
+    text-align: left;
+    border-bottom: 2px solid var(--border);
+    white-space: nowrap;
+  }
+  
+  td {
+    padding: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  
+  tr:hover {
+    background: #f8fafc;
+  }
+  
+  .subnet-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    background: #e0f2fe;
+    color: #0369a1;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 12px;
+  }
+  
+  /* Visual Network */
+  .network-visual {
+    margin-top: 20px;
+    padding: 20px;
+    background: #f8fafc;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+  }
+  
+  .network-bar {
+    height: 40px;
+    background: #e2e8f0;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+  
+  .subnet-segment {
+    position: absolute;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 12px;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  
+  .subnet-segment:hover {
+    transform: scale(1.05);
+    z-index: 10;
+  }
+  
+  .subnet-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+  }
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+  }
+  
+  .legend-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+  }
+  
+  /* Output & Messages */
+  .output-section {
+    margin-top: 30px;
+  }
+  
+  .message {
+    padding: 16px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .message-success {
+    background: #d1fae5;
+    color: #065f46;
+    border-left: 4px solid var(--success);
+  }
+  
+  .message-error {
+    background: #fee2e2;
+    color: #991b1b;
+    border-left: 4px solid var(--danger);
+  }
+  
+  .message-warning {
+    background: #fef3c7;
+    color: #92400e;
+    border-left: 4px solid var(--warning);
+  }
+  
+  .message i {
+    font-size: 20px;
+  }
+  
+  /* Utility */
+  .color-primary { color: var(--primary); }
+  .color-success { color: var(--success); }
+  .color-danger { color: var(--danger); }
+  .color-warning { color: var(--warning); }
+  
+  .text-sm { font-size: 13px; }
+  .text-xs { font-size: 12px; }
+  
+  .mb-1 { margin-bottom: 8px; }
+  .mb-2 { margin-bottom: 16px; }
+  .mb-3 { margin-bottom: 24px; }
+  .mt-1 { margin-top: 8px; }
+  .mt-2 { margin-top: 16px; }
+  .mt-3 { margin-top: 24px; }
+  
+  .d-flex { display: flex; }
+  .align-center { align-items: center; }
+  .justify-between { justify-content: space-between; }
+  .gap-1 { gap: 8px; }
+  .gap-2 { gap: 16px; }
+  
+  .hidden { display: none; }
+  
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 20px;
+    color: var(--gray);
+    font-size: 13px;
+    margin-top: 30px;
+  }
+  
+  /* Modal */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .modal.active {
+    display: flex;
+  }
+  
+  .modal-content {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .modal-title {
+    font-size: 20px;
+    font-weight: 700;
+  }
+  
+  .modal-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--gray);
+  }
+  
+  /* Quiz Mode */
+  .quiz-question {
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
+  
+  .quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .quiz-option {
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .quiz-option:hover {
+    background: #f1f5f9;
+  }
+  
+  .quiz-option.selected {
+    background: #dbeafe;
+    border-color: var(--secondary);
+  }
+  
+  .quiz-option.correct {
+    background: #d1fae5;
+    border-color: var(--success);
+  }
+  
+  .quiz-option.incorrect {
+    background: #fee2e2;
+    border-color: var(--danger);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .header {
+      flex-direction: column;
+      gap: 16px;
+      text-align: center;
+    }
+    
+    .btn-group {
+      flex-direction: column;
+    }
+    
+    .tabs {
+      overflow-x: auto;
+    }
+    
+    .tab {
+      white-space: nowrap;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <!-- Header -->
+  <div class="header">
+    <div class="logo">
+      <i class="fas fa-network-wired"></i>
+      <div>
+        <h1>Calculadora <span>VLSM</span> Professional</h1>
+        <p class="text-sm">Herramienta completa para subnetting IPv4/IPv6 y VLSM</p>
+      </div>
+    </div>
+    <div class="version">v2.0</div>
+  </div>
+
+  <!-- Main Layout -->
+  <div class="main-layout">
+    <!-- Left Panel - Input & Controls -->
+    <div>
+      <div class="card mb-3">
+        <div class="card-title">
+          <i class="fas fa-sliders-h"></i>
+          <span>Configuración de Red</span>
+        </div>
+        
+        <!-- Tabs -->
+        <div class="tabs">
+          <div class="tab active" data-tab="ipv4">IPv4</div>
+          <div class="tab" data-tab="ipv6">IPv6</div>
+          <div class="tab" data-tab="quiz">Modo Examen</div>
+          <div class="tab" data-tab="supernet">Supernetting</div>
+        </div>
+        
+        <!-- IPv4 Tab -->
+        <div class="tab-content active" id="tab-ipv4">
+          <div class="form-group">
+            <label>Red Base (IP/CIDR) <span class="label-help">ej: 192.168.0.0/24</span></label>
+            <input type="text" id="baseNet" value="192.168.0.0/24" placeholder="192.168.0.0/24">
+            <div class="text-xs mt-1" id="ipValidation"></div>
+          </div>
+          
+          <div class="form-group">
+            <label>Requisitos de Hosts <span class="label-help">separados por comas, ej: 100,30,10,5</span></label>
+            <textarea id="hostsList" placeholder="100,30,10,5">100,30,10,5</textarea>
+          </div>
+          
+          <div class="form-group">
+            <label>Opciones de Cálculo</label>
+            <div class="d-flex gap-2">
+              <select id="order">
+                <option value="desc">Ordenar descendente</option>
+                <option value="asc">Ordenar ascendente</option>
+                <option value="input">Mantener orden</option>
+              </select>
+              <select id="ipClass">
+                <option value="cidr">CIDR (Moderno)</option>
+                <option value="classful">Clases (A, B, C)</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>Configuraciones Adicionales</label>
+            <div class="d-flex gap-2 align-center">
+              <input type="checkbox" id="allow31" checked>
+              <label for="allow31" class="mb-0">Permitir /31 (Punto a Punto)</label>
+            </div>
+            <div class="d-flex gap-2 align-center mt-1">
+              <input type="checkbox" id="allow32" checked>
+              <label for="allow32" class="mb-0">Permitir /32 (Host Único)</label>
+            </div>
+          </div>
+          
+          <div class="btn-group">
+            <button class="btn btn-primary" id="calcBtn">
+              <i class="fas fa-calculator"></i> Calcular VLSM
+            </button>
+            <button class="btn btn-outline" id="saveConfig">
+              <i class="fas fa-save"></i> Guardar
+            </button>
+            <button class="btn btn-outline" id="loadConfig">
+              <i class="fas fa-folder-open"></i> Cargar
+            </button>
+          </div>
+        </div>
+        
+        <!-- IPv6 Tab -->
+        <div class="tab-content" id="tab-ipv6">
+          <div class="message message-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <div>IPv6 en desarrollo - Próxima versión</div>
+          </div>
+          <div class="form-group">
+            <label>Red IPv6 (Prefix)</label>
+            <input type="text" value="2001:db8::/32" disabled>
+          </div>
+        </div>
+        
+        <!-- Quiz Tab -->
+        <div class="tab-content" id="tab-quiz">
+          <div class="quiz-question" id="quizQuestion">
+            <p><strong>Pregunta 1:</strong> ¿Cuál es la máscara de subred para una red que necesita 14 hosts?</p>
+            <div class="quiz-options">
+              <div class="quiz-option" data-answer="a">255.255.255.240 (/28)</div>
+              <div class="quiz-option" data-answer="b">255.255.255.224 (/27)</div>
+              <div class="quiz-option" data-answer="c">255.255.255.248 (/29)</div>
+              <div class="quiz-option" data-answer="d">255.255.255.192 (/26)</div>
+            </div>
+          </div>
+          <button class="btn btn-secondary" id="nextQuestion">
+            <i class="fas fa-forward"></i> Siguiente Pregunta
+          </button>
+        </div>
+        
+        <!-- Supernetting Tab -->
+        <div class="tab-content" id="tab-supernet">
+          <div class="form-group">
+            <label>Redes a Agrupar <span class="label-help">una por línea</span></label>
+            <textarea id="supernetInput" placeholder="192.168.1.0/24&#10;192.168.2.0/24&#10;192.168.3.0/24">192.168.1.0/24
+192.168.2.0/24
+192.168.3.0/24</textarea>
+          </div>
+          <button class="btn btn-primary" id="calcSupernet">
+            <i class="fas fa-layer-group"></i> Calcular Supernet
+          </button>
+        </div>
+      </div>
+      
+      <!-- History Card -->
+      <div class="card">
+        <div class="card-title">
+          <i class="fas fa-history"></i>
+          <span>Historial de Cálculos</span>
+        </div>
+        <div id="historyList">
+          <div class="text-sm color-gray">No hay cálculos previos</div>
+        </div>
+        <div class="btn-group mt-2">
+          <button class="btn btn-sm btn-outline" id="clearHistory">
+            <i class="fas fa-trash"></i> Limpiar
+          </button>
+          <button class="btn btn-sm btn-outline" id="exportHistory">
+            <i class="fas fa-file-export"></i> Exportar
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Right Panel - Results -->
+    <div>
+      <div class="card mb-3">
+        <div class="card-title d-flex justify-between align-center">
+          <div>
+            <i class="fas fa-table"></i>
+            <span>Resultados VLSM</span>
+          </div>
+          <div class="btn-group">
+            <button class="btn btn-sm btn-outline" id="exportCSV">
+              <i class="fas fa-file-csv"></i> CSV
+            </button>
+            <button class="btn btn-sm btn-outline" id="exportPDF">
+              <i class="fas fa-file-pdf"></i> PDF
+            </button>
+            <button class="btn btn-sm btn-outline" id="copyResults">
+              <i class="fas fa-copy"></i> Copiar
+            </button>
+          </div>
+        </div>
+        
+        <div id="output">
+          <div class="message message-info">
+            <i class="fas fa-info-circle"></i>
+            <div>Ingresa una red base y requisitos, luego haz clic en "Calcular VLSM"</div>
+          </div>
+        </div>
+        
+        <!-- Network Visualization -->
+        <div class="network-visual" id="networkVisual">
+          <div class="text-sm mb-2"><strong>Visualización de Subredes:</strong></div>
+          <div class="network-bar" id="networkBar"></div>
+          <div class="subnet-legend" id="subnetLegend"></div>
+        </div>
+      </div>
+      
+      <!-- API & Export Section -->
+      <div class="card">
+        <div class="card-title">
+          <i class="fas fa-code"></i>
+          <span>API & Exportación</span>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-outline" id="showApi">
+            <i class="fas fa-terminal"></i> Mostrar API
+          </button>
+          <button class="btn btn-outline" id="exportJSON">
+            <i class="fas fa-file-code"></i> JSON
+          </button>
+          <button class="btn btn-outline" id="exportTXT">
+            <i class="fas fa-file-alt"></i> Texto
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+ 
+<!-- Modal for API -->
+<div class="modal" id="apiModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <div class="modal-title">API de Integración</div>
+      <button class="modal-close" id="closeApiModal">&times;</button>
+    </div>
+    <div class="mb-3">
+      <p>Usa esta API para integrar la calculadora en tus aplicaciones:</p>
+      <pre style="background: #f8fafc; padding: 15px; border-radius: 8px; overflow-x: auto; font-size: 13px;">
+// Ejemplo de uso
+fetch('/api/vlsm', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    network: '192.168.0.0/24',
+    requirements: [100, 30, 10, 5],
+    allow31: true,
+    allow32: false
+  })
+})
+.then(res => res.json())
+.then(data => console.log(data));</pre>
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-primary" id="copyApi">Copiar Código</button>
+      <button class="btn btn-outline" id="closeApiModal2">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Script -->
+<script>
+// ==================== UTILIDADES IP ====================
+
+// Validación de IP
+function isValidIPv4(ip) {
+  const parts = ip.split('.');
+  if (parts.length !== 4) return false;
+  
+  for (let part of parts) {
+    const num = parseInt(part, 10);
+    if (isNaN(num) || num < 0 || num > 255) return false;
+    if (part !== num.toString()) return false; // Evita "012" como válido
+  }
+  
+  return true;
+}
+
+function isValidCIDR(cidr) {
+  const parts = cidr.split('/');
+  if (parts.length !== 2) return false;
+  
+  if (!isValidIPv4(parts[0])) return false;
+  
+  const prefix = parseInt(parts[1], 10);
+  return !isNaN(prefix) && prefix >= 0 && prefix <= 32;
+}
+
+// Determinar clase de IP
+function getIPClass(ip) {
+  const firstOctet = parseInt(ip.split('.')[0], 10);
+  if (firstOctet >= 1 && firstOctet <= 126) return 'A';
+  if (firstOctet >= 128 && firstOctet <= 191) return 'B';
+  if (firstOctet >= 192 && firstOctet <= 223) return 'C';
+  if (firstOctet >= 224 && firstOctet <= 239) return 'D';
+  return 'E';
+}
+
+// Conversión IP <-> Entero
+function ipToInt(ip) {
+  if (!isValidIPv4(ip)) throw new Error('IP inválida');
+  const parts = ip.split('.').map(p => parseInt(p, 10));
+  return ((parts[0] << 24) | (parts[1] << 16) | (parts[2] << 8) | parts[3]) >>> 0;
+}
+
+function intToIp(int) {
+  return [(int >>> 24) & 255, (int >>> 16) & 255, (int >>> 8) & 255, int & 255].join('.');
+}
+
+// Máscara de red
+function prefixToMask(prefix) {
+  if (prefix === 0) return '0.0.0.0';
+  if (prefix === 32) return '255.255.255.255';
+  const mask = (0xFFFFFFFF << (32 - prefix)) >>> 0;
+  return intToIp(mask);
+}
+
+function maskToPrefix(mask) {
+  const maskInt = ipToInt(mask);
+  let prefix = 0;
+  for (let i = 31; i >= 0; i--) {
+    if ((maskInt >> i) & 1) {
+      prefix = 32 - i;
+      break;
+    }
+  }
+  return prefix;
+}
+
+// Cálculo de hosts
+function hostsFromPrefix(prefix, allow31 = true, allow32 = true) {
+  if (prefix === 32) return allow32 ? 1 : 0;
+  if (prefix === 31) return allow31 ? 2 : 0;
+  return Math.pow(2, 32 - prefix) - 2;
+}
+
+// Prefijo para cantidad de hosts (CORREGIDO)
+function prefixForHostCount(hostsNeeded, allow31 = true, allow32 = true) {
+  if (hostsNeeded <= 0) return allow32 ? 32 : 31;
+  
+  // Casos especiales
+  if (hostsNeeded === 1 && allow32) return 32;
+  if (hostsNeeded === 2 && allow31) return 31;
+  
+  // Para 0 hosts usables (enlace punto a punto)
+  if (hostsNeeded === 0 && allow31) return 31;
+  
+  // Cálculo normal
+  const totalIPsNeeded = hostsNeeded + 2;
+  let bitsForHosts = Math.ceil(Math.log2(totalIPsNeeded));
+  
+  // Ajustar para casos límite
+  if (Math.pow(2, bitsForHosts) - 2 < hostsNeeded) {
+    bitsForHosts++;
+  }
+  
+  let prefix = 32 - bitsForHosts;
+  
+  // Asegurar que el prefijo sea válido
+  if (prefix < 0) prefix = 0;
+  if (prefix > 32) prefix = 32;
+  
+  // Verificar si cumple con los hosts requeridos
+  const usableHosts = hostsFromPrefix(prefix, allow31, allow32);
+  if (usableHosts < hostsNeeded) {
+    prefix--;
+  }
+  
+  return Math.max(0, Math.min(32, prefix));
+}
+
+// Información de red
+function networkInfo(ip, prefix) {
+  const ipInt = ipToInt(ip);
+  const blockSize = Math.pow(2, 32 - prefix);
+  const network = (Math.floor(ipInt / blockSize) * blockSize) >>> 0;
+  const broadcast = (network + blockSize - 1) >>> 0;
+  const firstUsable = prefix <= 30 ? network + 1 : null;
+  const lastUsable = prefix <= 30 ? broadcast - 1 : null;
+  
+  return {
+    network: intToIp(network),
+    broadcast: intToIp(broadcast),
+    firstUsable: firstUsable ? intToIp(firstUsable) : 'N/A',
+    lastUsable: lastUsable ? intToIp(lastUsable) : 'N/A',
+    networkInt: network,
+    broadcastInt: broadcast
+  };
+}
+
+// Validar si IP es pública o privada
+function isPrivateIP(ip) {
+  const ipInt = ipToInt(ip);
+  // 10.0.0.0/8
+  if (ipInt >= ipToInt('10.0.0.0') && ipInt <= ipToInt('10.255.255.255')) return true;
+  // 172.16.0.0/12
+  if (ipInt >= ipToInt('172.16.0.0') && ipInt <= ipToInt('172.31.255.255')) return true;
+  // 192.168.0.0/16
+  if (ipInt >= ipToInt('192.168.0.0') && ipInt <= ipToInt('192.168.255.255')) return true;
+  // 169.254.0.0/16 (APIPA)
+  if (ipInt >= ipToInt('169.254.0.0') && ipInt <= ipToInt('169.254.255.255')) return true;
+  return false;
+}
+
+// ==================== ALGORITMO VLSM ====================
+
+function calculateVLSM(baseCidr, requirements, order = 'desc', allow31 = true, allow32 = true) {
+  // Validar entrada
+  if (!isValidCIDR(baseCidr)) {
+    throw new Error('Formato de red base inválido. Use: IP/Prefijo (ej: 192.168.0.0/24)');
+  }
+  
+  // Parsear red base
+  const [baseIp, basePrefixStr] = baseCidr.split('/');
+  const basePrefix = parseInt(basePrefixStr, 10);
+  const baseInt = ipToInt(baseIp);
+  
+  // Calcular red base real (alineada)
+  const baseBlock = Math.pow(2, 32 - basePrefix);
+  const baseNetwork = (Math.floor(baseInt / baseBlock) * baseBlock) >>> 0;
+  const baseBroadcast = (baseNetwork + baseBlock - 1) >>> 0;
+  
+  // Preparar requisitos
+  let reqs = requirements
+    .map((r, idx) => ({
+      origIndex: idx,
+      hosts: Math.max(0, parseInt(r, 10)),
+      label: `S${idx + 1}`
+    }))
+    .filter(r => !isNaN(r.hosts));
+  
+  if (reqs.length === 0) {
+    throw new Error('No hay requisitos válidos de hosts');
+  }
+  
+  // Ordenar según opción
+  if (order === 'desc') {
+    reqs.sort((a, b) => b.hosts - a.hosts);
+  } else if (order === 'asc') {
+    reqs.sort((a, b) => a.hosts - b.hosts);
+  }
+  // 'input' mantiene el orden original
+  
+  let current = baseNetwork;
+  const results = [];
+  const colors = [
+    '#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', 
+    '#06b6d4', '#84cc16', '#f97316', '#ec4899', '#6366f1'
+  ];
+  
+  for (let i = 0; i < reqs.length; i++) {
+    const r = reqs[i];
+    const pref = prefixForHostCount(r.hosts, allow31, allow32);
+    const size = Math.pow(2, 32 - pref);
+    
+    // Alinear a límite de bloque
+    const alignedNetwork = (Math.floor(current / size) * size) >>> 0;
+    let net = alignedNetwork < current ? (alignedNetwork + size) >>> 0 : alignedNetwork;
+    const broadcast = (net + size - 1) >>> 0;
+    
+    // Verificar si cabe en la red base
+    if (broadcast > baseBroadcast) {
+      throw new Error(`Espacio insuficiente para subred que requiere ${r.hosts} hosts. Red base demasiado pequeña.`);
+    }
+    
+    // Información de la subred
+    const netInfo = networkInfo(intToIp(net), pref);
+    
+    results.push({
+      label: r.label,
+      requestedHosts: r.hosts,
+      assignedPrefix: pref,
+      network: netInfo.network,
+      mask: prefixToMask(pref),
+      broadcast: netInfo.broadcast,
+      firstUsable: netInfo.firstUsable,
+      lastUsable: netInfo.lastUsable,
+      usableHosts: hostsFromPrefix(pref, allow31, allow32),
+      blockSize: size,
+      color: colors[i % colors.length],
+      networkInt: net,
+      broadcastInt: broadcast
+    });
+    
+    current = (broadcast + 1) >>> 0;
+  }
+  
+  // Restaurar orden original si se solicitó
+  if (order === 'input') {
+    results.sort((a, b) => {
+      const aIdx = reqs.findIndex(r => r.label === a.label);
+      const bIdx = reqs.findIndex(r => r.label === b.label);
+      return aIdx - bIdx;
+    });
+  }
+  
+  return {
+    baseNetwork: intToIp(baseNetwork),
+    baseBroadcast: intToIp(baseBroadcast),
+    basePrefix,
+    totalHosts: hostsFromPrefix(basePrefix, allow31, allow32),
+    isPrivate: isPrivateIP(baseIp),
+    ipClass: getIPClass(baseIp),
+    assigned: results,
+    usedSpace: current - baseNetwork,
+    totalSpace: baseBlock,
+    utilization: ((current - baseNetwork) / baseBlock * 100).toFixed(2)
+  };
+}
+
+// ==================== SUPERRETTING ====================
+
+function calculateSupernet(networks) {
+  if (!Array.isArray(networks) || networks.length === 0) {
+    throw new Error('Proporcione al menos una red');
+  }
+  
+  // Validar y parsear redes
+  const parsed = networks.map(net => {
+    if (!isValidCIDR(net)) {
+      throw new Error(`Red inválida: ${net}`);
+    }
+    const [ip, prefixStr] = net.split('/');
+    const prefix = parseInt(prefixStr, 10);
+    const ipInt = ipToInt(ip);
+    const block = Math.pow(2, 32 - prefix);
+    const network = (Math.floor(ipInt / block) * block) >>> 0;
+    
+    return {
+      original: net,
+      ip,
+      prefix,
+      network,
+      broadcast: (network + block - 1) >>> 0
+    };
+  });
+  
+  // Ordenar por dirección de red
+  parsed.sort((a, b) => a.network - b.network);
+  
+  // Verificar que sean contiguas
+  for (let i = 1; i < parsed.length; i++) {
+    if (parsed[i].network !== parsed[i-1].broadcast + 1) {
+      throw new Error('Las redes no son contiguas');
+    }
+  }
+  
+  // Encontrar prefijo común
+  const firstNetwork = parsed[0].network;
+  const lastBroadcast = parsed[parsed.length - 1].broadcast;
+  const totalSize = lastBroadcast - firstNetwork + 1;
+  
+  // Calcular prefijo para el tamaño total
+  const bitsForSize = Math.ceil(Math.log2(totalSize));
+  const supernetPrefix = 32 - bitsForSize;
+  
+  // Verificar que todas las redes estén dentro del supernet
+  const supernetBlock = Math.pow(2, 32 - supernetPrefix);
+  const supernetNetwork = (Math.floor(firstNetwork / supernetBlock) * supernetBlock) >>> 0;
+  
+  if (supernetNetwork !== firstNetwork) {
+    throw new Error('No se puede crear un supernet que contenga todas las redes');
+  }
+  
+  return {
+    supernet: `${intToIp(supernetNetwork)}/${supernetPrefix}`,
+    network: intToIp(supernetNetwork),
+    prefix: supernetPrefix,
+    mask: prefixToMask(supernetPrefix),
+    contains: parsed.length,
+    totalHosts: hostsFromPrefix(supernetPrefix),
+    originalNetworks: parsed.map(p => p.original)
+  };
+}
+
+// ==================== UI & CONTROLES ====================
+
+// Elementos DOM
+const elements = {
+  baseNet: document.getElementById('baseNet'),
+  hostsList: document.getElementById('hostsList'),
+  order: document.getElementById('order'),
+  ipClass: document.getElementById('ipClass'),
+  allow31: document.getElementById('allow31'),
+  allow32: document.getElementById('allow32'),
+  calcBtn: document.getElementById('calcBtn'),
+  output: document.getElementById('output'),
+  networkBar: document.getElementById('networkBar'),
+  subnetLegend: document.getElementById('subnetLegend'),
+  saveConfig: document.getElementById('saveConfig'),
+  loadConfig: document.getElementById('loadConfig'),
+  clearHistory: document.getElementById('clearHistory'),
+  exportHistory: document.getElementById('exportHistory'),
+  exportCSV: document.getElementById('exportCSV'),
+  exportPDF: document.getElementById('exportPDF'),
+  copyResults: document.getElementById('copyResults'),
+  showApi: document.getElementById('showApi'),
+  exportJSON: document.getElementById('exportJSON'),
+  exportTXT: document.getElementById('exportTXT'),
+  apiModal: document.getElementById('apiModal'),
+  closeApiModal: document.getElementById('closeApiModal'),
+  closeApiModal2: document.getElementById('closeApiModal2'),
+  copyApi: document.getElementById('copyApi'),
+  calcSupernet: document.getElementById('calcSupernet'),
+  supernetInput: document.getElementById('supernetInput'),
+  nextQuestion: document.getElementById('nextQuestion'),
+  historyList: document.getElementById('historyList'),
+  tabs: document.querySelectorAll('.tab'),
+  tabContents: document.querySelectorAll('.tab-content')
+};
+
+// Historial de cálculos
+let calculationHistory = JSON.parse(localStorage.getItem('vlsmHistory') || '[]');
+
+// Validación en tiempo real
+elements.baseNet.addEventListener('input', function() {
+  const validation = document.getElementById('ipValidation');
+  const cidr = this.value.trim();
+  
+  if (!cidr) {
+    validation.innerHTML = '';
+    return;
+  }
+  
+  if (isValidCIDR(cidr)) {
+    const [ip, prefix] = cidr.split('/');
+    const ipClass = getIPClass(ip);
+    const isPrivate = isPrivateIP(ip);
+    const hosts = hostsFromPrefix(parseInt(prefix, 10));
+    
+    validation.innerHTML = `
+      <span class="color-success">
+        <i class="fas fa-check-circle"></i> Válido
+      </span> | 
+      Clase: ${ipClass} | 
+      ${isPrivate ? 'Privada' : 'Pública'} | 
+      Hosts: ${hosts.toLocaleString()}
+    `;
+  } else {
+    validation.innerHTML = `
+      <span class="color-danger">
+        <i class="fas fa-times-circle"></i> Formato inválido. Use: 192.168.0.0/24
+      </span>
+    `;
+  }
+});
+
+// Tabs
+elements.tabs.forEach(tab => {
+  tab.addEventListener('click', function() {
+    const tabId = this.getAttribute('data-tab');
+    
+    // Actualizar tabs activos
+    elements.tabs.forEach(t => t.classList.remove('active'));
+    this.classList.add('active');
+    
+    // Mostrar contenido correspondiente
+    elements.tabContents.forEach(content => {
+      content.classList.remove('active');
+      if (content.id === `tab-${tabId}`) {
+        content.classList.add('active');
+      }
+    });
+  });
+});
+
+// Calcular VLSM
+elements.calcBtn.addEventListener('click', function() {
+  try {
+    const base = elements.baseNet.value.trim();
+    const hostsRaw = elements.hostsList.value.trim();
+    const order = elements.order.value;
+    const allow31 = elements.allow31.checked;
+    const allow32 = elements.allow32.checked;
+    
+    if (!base) throw new Error('Ingrese la red base');
+    if (!hostsRaw) throw new Error('Ingrese los requisitos de hosts');
+    
+    const hostItems = hostsRaw.split(',').map(s => parseInt(s.trim(), 10)).filter(x => !isNaN(x));
+    if (hostItems.length === 0) throw new Error('No hay números válidos en la lista');
+    
+    const result = calculateVLSM(base, hostItems, order, allow31, allow32);
+    
+    // Mostrar resultados
+    displayResults(result);
+    
+    // Actualizar visualización
+    updateNetworkVisualization(result);
+    
+    // Guardar en historial
+    saveToHistory({
+      type: 'vlsm',
+      timestamp: new Date().toISOString(),
+      input: { base, hosts: hostItems, order, allow31, allow32 },
+      result: result
+    });
+    
+  } catch (error) {
+    elements.output.innerHTML = `
+      <div class="message message-error">
+        <i class="fas fa-exclamation-circle"></i>
+        <div><strong>Error:</strong> ${error.message}</div>
+      </div>
+    `;
+  }
+});
+
+// Calcular Supernet
+elements.calcSupernet.addEventListener('click', function() {
+  try {
+    const networksText = elements.supernetInput.value.trim();
+    if (!networksText) throw new Error('Ingrese al menos una red');
+    
+    const networks = networksText.split('\n').map(s => s.trim()).filter(s => s);
+    const result = calculateSupernet(networks);
+    
+    elements.output.innerHTML = `
+      <div class="message message-success">
+        <i class="fas fa-check-circle"></i>
+        <div><strong>Supernet calculado:</strong></div>
+      </div>
+      <div class="table-container">
+        <table>
+          <tr><th>Supernet</th><td>${result.supernet}</td></tr>
+          <tr><th>Máscara</th><td>${result.mask}</td></tr>
+          <tr><th>Redes contenidas</th><td>${result.contains}</td></tr>
+          <tr><th>Hosts totales</th><td>${result.totalHosts.toLocaleString()}</td></tr>
+          <tr><th>Redes originales</th><td>${result.originalNetworks.join(', ')}</td></tr>
+        </table>
+      </div>
+    `;
+    
+    saveToHistory({
+      type: 'supernet',
+      timestamp: new Date().toISOString(),
+      input: { networks },
+      result: result
+    });
+    
+  } catch (error) {
+    elements.output.innerHTML = `
+      <div class="message message-error">
+        <i class="fas fa-exclamation-circle"></i>
+        <div><strong>Error:</strong> ${error.message}</div>
+      </div>
+    `;
+  }
+});
+
+// Mostrar resultados
+function displayResults(result) {
+  let html = `
+    <div class="message message-success">
+      <i class="fas fa-check-circle"></i>
+      <div>
+        <strong>VLSM calculado exitosamente</strong> | 
+        Red: ${result.baseNetwork}/${result.basePrefix} | 
+        Utilización: ${result.utilization}% | 
+        ${result.isPrivate ? 'Privada' : 'Pública'}
+      </div>
+    </div>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Subred</th>
+            <th>Hosts Req.</th>
+            <th>Network</th>
+            <th>Prefijo</th>
+            <th>Máscara</th>
+            <th>Broadcast</th>
+            <th>Primer Usable</th>
+            <th>Último Usable</th>
+            <th>Hosts Útiles</th>
+          </tr>
+        </thead>
+        <tbody>
+  `;
+  
+  result.assigned.forEach(r => {
+    html += `
+      <tr>
+        <td><span class="subnet-badge">${r.label}</span></td>
+        <td>${r.requestedHosts}</td>
+        <td>${r.network}</td>
+        <td>/${r.assignedPrefix}</td>
+        <td>${r.mask}</td>
+        <td>${r.broadcast}</td>
+        <td>${r.firstUsable}</td>
+        <td>${r.lastUsable}</td>
+        <td>${r.usableHosts}</td>
+      </tr>
+    `;
+  });
+  
+  html += `
+        </tbody>
+      </table>
+    </div>
+    <div class="mt-2 text-sm">
+      <strong>Resumen:</strong> ${result.assigned.length} subredes creadas | 
+      Espacio usado: ${(result.usedSpace).toLocaleString()} IPs | 
+      Espacio total: ${(result.totalSpace).toLocaleString()} IPs
+    </div>
+  `;
+  
+  elements.output.innerHTML = html;
+}
+
+// Visualización de red
+function updateNetworkVisualization(result) {
+  const totalSize = result.totalSpace;
+  const baseNetworkInt = ipToInt(result.baseNetwork);
+  
+  elements.networkBar.innerHTML = '';
+  elements.subnetLegend.innerHTML = '';
+  
+  result.assigned.forEach((subnet, index) => {
+    const start = subnet.networkInt - baseNetworkInt;
+    const width = (subnet.blockSize / totalSize) * 100;
+    
+    const segment = document.createElement('div');
+    segment.className = 'subnet-segment';
+    segment.style.left = `${(start / totalSize) * 100}%`;
+    segment.style.width = `${width}%`;
+    segment.style.background = subnet.color;
+    segment.title = `${subnet.label}: ${subnet.network}/${subnet.assignedPrefix} (${subnet.blockSize} IPs)`;
+    
+    if (width > 5) {
+      segment.textContent = `${subnet.label} (${subnet.blockSize})`;
+    }
+    
+    elements.networkBar.appendChild(segment);
+    
+    // Leyenda
+    const legendItem = document.createElement('div');
+    legendItem.className = 'legend-item';
+    legendItem.innerHTML = `
+      <div class="legend-color" style="background: ${subnet.color}"></div>
+      <div>${subnet.label}: ${subnet.network}/${subnet.assignedPrefix}</div>
+    `;
+    elements.subnetLegend.appendChild(legendItem);
+  });
+}
+
+// Historial
+function saveToHistory(calculation) {
+  calculationHistory.unshift(calculation);
+  if (calculationHistory.length > 10) {
+    calculationHistory = calculationHistory.slice(0, 10);
+  }
+  localStorage.setItem('vlsmHistory', JSON.stringify(calculationHistory));
+  updateHistoryDisplay();
+}
+
+function updateHistoryDisplay() {
+  if (calculationHistory.length === 0) {
+    elements.historyList.innerHTML = '<div class="text-sm color-gray">No hay cálculos previos</div>';
+    return;
+  }
+  
+  let html = '';
+  calculationHistory.forEach((calc, index) => {
+    const date = new Date(calc.timestamp).toLocaleString();
+    const type = calc.type === 'vlsm' ? 'VLSM' : 'Supernet';
+    
+    html += `
+      <div class="mb-2 p-2 border rounded" style="border-color: var(--border);">
+        <div class="d-flex justify-between align-center mb-1">
+          <strong class="text-sm">${type} - ${date}</strong>
+          <button class="btn btn-sm btn-outline" onclick="loadFromHistory(${index})">
+            <i class="fas fa-redo"></i>
+          </button>
+        </div>
+        <div class="text-xs">${calc.type === 'vlsm' 
+          ? `Red: ${calc.input.base}, Hosts: ${calc.input.hosts.join(', ')}` 
+          : `Redes: ${calc.input.networks.length}`}</div>
+      </div>
+    `;
+  });
+  
+  elements.historyList.innerHTML = html;
+}
+
+window.loadFromHistory = function(index) {
+  const calc = calculationHistory[index];
+  if (calc.type === 'vlsm') {
+    elements.baseNet.value = calc.input.base;
+    elements.hostsList.value = calc.input.hosts.join(', ');
+    elements.order.value = calc.input.order;
+    elements.allow31.checked = calc.input.allow31;
+    elements.allow32.checked = calc.input.allow32;
+    
+    // Cambiar a tab IPv4
+    elements.tabs.forEach(t => t.classList.remove('active'));
+    document.querySelector('[data-tab="ipv4"]').classList.add('active');
+    elements.tabContents.forEach(c => c.classList.remove('active'));
+    document.getElementById('tab-ipv4').classList.add('active');
+    
+    displayResults(calc.result);
+    updateNetworkVisualization(calc.result);
+  }
+};
+
+// Limpiar historial
+elements.clearHistory.addEventListener('click', function() {
+  if (confirm('¿Eliminar todo el historial?')) {
+    calculationHistory = [];
+    localStorage.removeItem('vlsmHistory');
+    updateHistoryDisplay();
+  }
+});
+
+// Exportar historial
+elements.exportHistory.addEventListener('click', function() {
+  if (calculationHistory.length === 0) {
+    alert('No hay historial para exportar');
+    return;
+  }
+  
+  const dataStr = JSON.stringify(calculationHistory, null, 2);
+  const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+  
+  const exportFileDefaultName = 'vlsm-history.json';
+  const linkElement = document.createElement('a');
+  linkElement.setAttribute('href', dataUri);
+  linkElement.setAttribute('download', exportFileDefaultName);
+  linkElement.click();
+});
+
+// Exportar CSV
+elements.exportCSV.addEventListener('click', function() {
+  const table = elements.output.querySelector('table');
+  if (!table) {
+    alert('Primero calcula un VLSM');
+    return;
+  }
+  
+  let csv = [];
+  const rows = table.querySelectorAll('tr');
+  
+  rows.forEach(row => {
+    const rowData = [];
+    row.querySelectorAll('th, td').forEach(cell => {
+      rowData.push(`"${cell.textContent.replace(/"/g, '""')}"`);
+    });
+    csv.push(rowData.join(','));
+  });
+  
+  const csvContent = csv.join('\n');
+  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'vlsm-resultados.csv';
+  link.click();
+});
+
+// Exportar JSON
+elements.exportJSON.addEventListener('click', function() {
+  const table = elements.output.querySelector('table');
+  if (!table) {
+    alert('Primero calcula un VLSM');
+    return;
+  }
+  
+  // Extraer datos de la tabla
+  const headers = [];
+  const rows = [];
+  
+  const headerCells = table.querySelectorAll('th');
+  headerCells.forEach(cell => headers.push(cell.textContent.trim()));
+  
+  const dataRows = table.querySelectorAll('tbody tr');
+  dataRows.forEach(row => {
+    const rowData = {};
+    const cells = row.querySelectorAll('td');
+    cells.forEach((cell, index) => {
+      rowData[headers[index]] = cell.textContent.trim();
+    });
+    rows.push(rowData);
+  });
+  
+  const jsonData = {
+    exportDate: new Date().toISOString(),
+    subnets: rows
+  };
+  
+  const dataStr = JSON.stringify(jsonData, null, 2);
+  const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+  const link = document.createElement('a');
+  link.href = dataUri;
+  link.download = 'vlsm-resultados.json';
+  link.click();
+});
+
+// Copiar resultados
+elements.copyResults.addEventListener('click', function() {
+  const table = elements.output.querySelector('table');
+  if (!table) {
+    alert('No hay resultados para copiar');
+    return;
+  }
+  
+  let text = '';
+  const rows = table.querySelectorAll('tr');
+  
+  rows.forEach(row => {
+    const rowData = [];
+    row.querySelectorAll('th, td').forEach(cell => {
+      rowData.push(cell.textContent.trim());
+    });
+    text += rowData.join('\t') + '\n';
+  });
+  
+  navigator.clipboard.writeText(text).then(() => {
+    alert('Resultados copiados al portapapeles');
+  });
+});
+
+// API Modal
+elements.showApi.addEventListener('click', function() {
+  elements.apiModal.classList.add('active');
+});
+
+elements.closeApiModal.addEventListener('click', function() {
+  elements.apiModal.classList.remove('active');
+});
+
+elements.closeApiModal2.addEventListener('click', function() {
+  elements.apiModal.classList.remove('active');
+});
+
+elements.copyApi.addEventListener('click', function() {
+  const apiCode = `// API VLSM Calculator
+const vlsmApi = {
+  calculate: function(network, requirements, options = {}) {
+    return {
+      network: network,
+      requirements: requirements,
+      options: options,
+      timestamp: new Date().toISOString()
+    };
+  },
+  calculateSupernet: function(networks) {
+    return {
+      networks: networks,
+      timestamp: new Date().toISOString()
+    };
+  }
+};`;
+  
+  navigator.clipboard.writeText(apiCode).then(() => {
+    alert('Código API copiado al portapapeles');
+  });
+});
+
+// Modo Quiz
+elements.nextQuestion.addEventListener('click', function() {
+  const questions = [
+    {
+      question: "¿Cuál es la máscara de subred para una red que necesita 60 hosts?",
+      options: [
+        { text: "255.255.255.192 (/26)", correct: false },
+        { text: "255.255.255.224 (/27)", correct: false },
+        { text: "255.255.255.128 (/25)", correct: true },
+        { text: "255.255.255.240 (/28)", correct: false }
+      ]
+    },
+    {
+      question: "¿Cuántos hosts útiles tiene una red /28?",
+      options: [
+        { text: "14", correct: true },
+        { text: "16", correct: false },
+        { text: "30", correct: false },
+        { text: "32", correct: false }
+      ]
+    },
+    {
+      question: "¿Qué clase es la IP 172.16.0.0?",
+      options: [
+        { text: "Clase A", correct: false },
+        { text: "Clase B", correct: true },
+        { text: "Clase C", correct: false },
+        { text: "Clase D", correct: false }
+      ]
+    }
+  ];
+  
+  const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
+  const quizContainer = document.getElementById('quizQuestion');
+  
+  let optionsHtml = '';
+  randomQuestion.options.forEach((opt, idx) => {
+    optionsHtml += `<div class="quiz-option" data-correct="${opt.correct}">${opt.text}</div>`;
+  });
+  
+  quizContainer.innerHTML = `
+    <p><strong>Pregunta:</strong> ${randomQuestion.question}</p>
+    <div class="quiz-options">${optionsHtml}</div>
+  `;
+  
+  // Agregar eventos a las opciones
+  quizContainer.querySelectorAll('.quiz-option').forEach(option => {
+    option.addEventListener('click', function() {
+      const isCorrect = this.getAttribute('data-correct') === 'true';
+      quizContainer.querySelectorAll('.quiz-option').forEach(opt => {
+        opt.classList.remove('selected', 'correct', 'incorrect');
+      });
+      
+      this.classList.add('selected');
+      this.classList.add(isCorrect ? 'correct' : 'incorrect');
+      
+      if (!isCorrect) {
+        const correctOption = quizContainer.querySelector('[data-correct="true"]');
+        if (correctOption) correctOption.classList.add('correct');
+      }
+    });
+  });
+});
+
+// Guardar configuración
+elements.saveConfig.addEventListener('click', function() {
+  const config = {
+    baseNet: elements.baseNet.value,
+    hostsList: elements.hostsList.value,
+    order: elements.order.value,
+    allow31: elements.allow31.checked,
+    allow32: elements.allow32.checked,
+    timestamp: new Date().toISOString()
+  };
+  
+  const configStr = JSON.stringify(config, null, 2);
+  const blob = new Blob([configStr], { type: 'application/json' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'vlsm-config.json';
+  link.click();
+});
+
+// Cargar configuración
+elements.loadConfig.addEventListener('click', function() {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = '.json';
+  
+  input.onchange = function(e) {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    
+    reader.onload = function(event) {
+      try {
+        const config = JSON.parse(event.target.result);
+        
+        elements.baseNet.value = config.baseNet || '';
+        elements.hostsList.value = config.hostsList || '';
+        elements.order.value = config.order || 'desc';
+        elements.allow31.checked = config.allow31 !== undefined ? config.allow31 : true;
+        elements.allow32.checked = config.allow32 !== undefined ? config.allow32 : true;
+        
+        alert('Configuración cargada correctamente');
+      } catch (error) {
+        alert('Error al cargar la configuración: ' + error.message);
+      }
+    };
+    
+    reader.readAsText(file);
+  };
+  
+  input.click();
+});
+
+// Inicializar
+function init() {
+  updateHistoryDisplay();
+  
+  // Configuración por defecto
+  if (!localStorage.getItem('vlsmFirstRun')) {
+    const defaultConfig = {
+      baseNet: '192.168.0.0/24',
+      hostsList: '100,30,10,5',
+      order: 'desc',
+      allow31: true,
+      allow32: true
+    };
+    localStorage.setItem('vlsmConfig', JSON.stringify(defaultConfig));
+    localStorage.setItem('vlsmFirstRun', 'true');
+  }
+  
+  // Validar IP inicial
+  if (elements.baseNet.value) {
+    const event = new Event('input');
+    elements.baseNet.dispatchEvent(event);
+  }
+}
+
+// Inicializar aplicación
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
