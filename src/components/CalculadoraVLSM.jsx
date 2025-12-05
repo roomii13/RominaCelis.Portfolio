@@ -723,7 +723,7 @@ const htmlContent = `<!doctype html>
   </div>
 </div>
 
-<!-- Modal for API -->
+<!-- Modal de API -->
 <div class="modal" id="apiModal">
   <div class="modal-content">
     <div class="modal-header">
@@ -833,7 +833,7 @@ function prefixForHostCount(hostsNeeded, allow31 = true, allow32 = true) {
   return Math.max(0, Math.min(32, prefix));
 }
 
-// Almacenamiento simple en memoria (reemplaza localStorage)
+// Almacenamiento simple en memoria
 const memoryStorage = {
   data: {},
   setItem: function(key, value) {
@@ -1380,7 +1380,7 @@ function setupQuiz() {
   showQuestion(0);
 }
 
-// ==================== EVENT LISTENERS ====================
+// ==================== EVENTOS ====================
 function setupEventListeners() {
   // Botón principal de cálculo
   document.getElementById('calcBtn').addEventListener('click', function() {
@@ -1582,19 +1582,19 @@ const CalculadoraVLSM = ({ onClose }) => {
             <div className="bg-gradient-to-br from-cyan-900/20 to-blue-900/20 backdrop-blur-sm rounded-2xl p-6 border border-cyan-500/20">
               <div className="flex items-center space-x-3 mb-4">
                 <Zap className="w-6 h-6 text-cyan-400" />
-                <h3 className="text-xl font-bold text-white">✅ Botones Funcionales</h3>
+                <h3 className="text-xl font-bold text-white">✅ Funciones</h3>
               </div>
               <ul className="space-y-3 text-sm">
                 {[
-                  '📊 Calcular VLSM - Funciona',
-                  '💾 Guardar/Cargar Config - Funciona',
-                  '📥 Exportar CSV/JSON/TXT - Funciona',
-                  '📋 Copiar Resultados - Funciona',
-                  '📚 Historial - Funciona',
-                  '🎯 Modo Quiz - Funciona',
-                  '🔗 API Modal - Funciona',
-                  '📈 Visualización - Funciona',
-                  '🗑️ Limpiar Historial - Funciona'
+                  '📊 Calcular VLSM',
+                  '💾 Guardar/Cargar Config',
+                  '📥 Exportar CSV/JSON/TXT ',
+                  '📋 Copiar Resultados ',
+                  '📚 Historial ',
+                  '🎯 Modo Quiz ',
+                  '🔗 API Modal ',
+                  '📈 Visualización ',
+                  '🗑️ Limpiar Historial'
                 ].map((item, idx) => (
                   <li key={idx} className="text-gray-300 flex items-center space-x-2">
                     <div className="w-2 h-2 bg-green-400 rounded-full"></div>
