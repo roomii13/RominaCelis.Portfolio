@@ -7,7 +7,7 @@ import chili1 from './assets/chili1.jpg';
 import chili2 from './assets/chili2.jpg';
 import vibras1 from './assets/vibras1.jpg';
 import vibras2 from './assets/vibras2.jpg';
-import vlsmCaptura from './assets/vlsm-captura.png';
+import vlsmCaptura from './assets/calculadora-vlsm.png';
 import CalculadoraVLSM from './components/CalculadoraVLSM';
 
 
