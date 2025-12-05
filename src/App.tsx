@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Heart, Instagram, Facebook, MessageCircle, Mail, ExternalLink, Code, Database, Smartphone, Monitor, Star, Moon, Cloud } from 'lucide-react';
+import { Heart, Instagram, Facebook, MessageCircle, Mail, ExternalLink, Code, Database, Smartphone, Monitor, Star, Moon, Cloud, Cpu, Network, Calculator } from 'lucide-react';
 import fotoPerfil from './assets/fotoPerfil1.jpg';
 import captura from './assets/Captura de pantalla 2025-07-17 220850.jpg';
 import captura1 from './assets/Captura de pantalla 2025-07-17 220822.jpg';
@@ -10,11 +10,11 @@ import vibras2 from './assets/vibras2.jpg';
 import vlsmCaptura from './assets/calculadora-vlsm.png';
 import CalculadoraVLSM from './components/CalculadoraVLSM';
 
-
 function App() {
   const [isVisible, setIsVisible] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [visibleSections, setVisibleSections] = useState(new Set());
+  const [mostrarCalculadora, setMostrarCalculadora] = useState(false);
   const sectionsRef = useRef<{ [key: string]: HTMLElement | null }>({});
 
   useEffect(() => {
@@ -53,7 +53,8 @@ function App() {
     { name: 'C#', icon: '💜', level: 80, color: 'from-purple-400 to-indigo-500' },
     { name: 'Java', icon: '☕', level: 85, color: 'from-orange-400 to-red-600' },
     { name: 'SQL', icon: '🗄️', level: 88, color: 'from-green-400 to-blue-500' },
-     { name: 'Phyton', icon: '🐍', level: 40, color: 'from-red-500 to-pink-600' },
+    { name: 'Python', icon: '🐍', level: 40, color: 'from-red-500 to-pink-600' },
+    { name: 'Networking', icon: '🔌', level: 75, color: 'from-green-400 to-emerald-500' },
   ];
 
   const setSectionRef = (key: string) => (el: HTMLElement | null) => {
@@ -311,8 +312,9 @@ function App() {
               <div className="w-32 h-1 bg-gradient-to-r from-green-400 to-blue-400 mx-auto rounded-full" />
             </div>
             
+            {/* Proyecto 1: DentalSystem */}
             <div 
-              className={`bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-500 hover:scale-[1.02] ${
+              className={`bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-500 hover:scale-[1.02] mb-12 ${
                 visibleSections.has('projects') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
               }`}
             >
@@ -324,8 +326,7 @@ function App() {
                   </h3>
                   <p className="text-gray-200 text-lg leading-relaxed">
                     DentalSystem es una aplicación web diseñada específicamente para mecánicos dentales y laboratorios de prótesis, con el objetivo de optimizar la gestión de trabajos, 
-                    facturación y comunicación con dentistas. 
-                    La plataforma permite llevar un control detallado de los casos en proceso, pendientes y completos, mejorando la eficiencia y organización del flujo de trabajo.
+                    facturación y comunicación con dentistas.
                   </p>
                   
                   <div className="flex flex-wrap gap-3">
@@ -355,7 +356,8 @@ function App() {
                     <div className="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
                     <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
                       <img 
-                     src={captura1} alt="Captura de pantalla"                        
+                        src={captura1} 
+                        alt="Captura de pantalla DentalSystem"                        
                         className="w-full h-48 object-cover rounded-xl"
                       />
                     </div>
@@ -363,16 +365,24 @@ function App() {
                   <div className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
                     <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
-                      <img src={captura} alt="Captura de pantalla" 
+                      <img 
+                        src={captura} 
+                        alt="Captura de pantalla DentalSystem" 
                         className="w-full h-48 object-cover rounded-xl"
                       />
                     </div>
                   </div>
                 </div>
               </div>
-              
-              <br></br>
-               <div className="grid lg:grid-cols-2 gap-8 items-center">
+            </div>
+
+            {/* Proyecto 2: ChilliTattoo */}
+            <div 
+              className={`bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-500 hover:scale-[1.02] mb-12 ${
+                visibleSections.has('projects') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
+              }`}
+            >
+              <div className="grid lg:grid-cols-2 gap-8 items-center">
                 <div className="space-y-6">
                   <h3 className="text-3xl sm:text-4xl font-bold text-white mb-4 flex items-center">
                     <Code className="w-10 h-10 mr-4 text-blue-400" />
@@ -410,7 +420,8 @@ function App() {
                     <div className="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
                     <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
                       <img 
-                     src={chili1} alt="Captura de pantalla"                        
+                        src={chili1} 
+                        alt="Captura de pantalla ChilliTattoo"                        
                         className="w-full h-48 object-cover rounded-xl"
                       />
                     </div>
@@ -418,14 +429,23 @@ function App() {
                   <div className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
                     <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
-                      <img src={chili2} alt="Captura" 
+                      <img 
+                        src={chili2} 
+                        alt="Captura ChilliTattoo" 
                         className="w-full h-48 object-cover rounded-xl"
                       />
                     </div>
                   </div>
                 </div>
               </div>
-              <br></br>
+            </div>
+
+            {/* Proyecto 3: Vibras */}
+            <div 
+              className={`bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-500 hover:scale-[1.02] mb-12 ${
+                visibleSections.has('projects') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
+              }`}
+            >
               <div className="grid lg:grid-cols-2 gap-8 items-center">
                 <div className="space-y-6">
                   <h3 className="text-3xl sm:text-4xl font-bold text-white mb-4 flex items-center">
@@ -464,7 +484,8 @@ function App() {
                     <div className="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
                     <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
                       <img 
-                     src={vibras1} alt="Captura de pantalla"                        
+                        src={vibras1} 
+                        alt="Captura de pantalla Vibras"                        
                         className="w-full h-48 object-cover rounded-xl"
                       />
                     </div>
@@ -472,16 +493,18 @@ function App() {
                   <div className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
                     <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
-                      <img src={vibras2} alt="Captura" 
+                      <img 
+                        src={vibras2} 
+                        alt="Captura Vibras" 
                         className="w-full h-48 object-cover rounded-xl"
                       />
                     </div>
                   </div>
                 </div>
               </div>
-               
-              <br></br>
-              {/* Proyecto 4: Calculadora VLSM */}
+            </div>
+
+            {/* Proyecto 4: Calculadora VLSM */}
             <div 
               className={`bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-500 hover:scale-[1.02] ${
                 visibleSections.has('projects') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
@@ -563,6 +586,7 @@ function App() {
                 </div>
               </div>
             </div>
+          </div>
         </section>
 
         {/* seccion contacto*/}
@@ -623,7 +647,8 @@ function App() {
           }}
         />
       </div>
-        {/* Calculadora VLSM Modal */}
+
+      {/* Calculadora VLSM Modal */}
       {mostrarCalculadora && (
         <CalculadoraVLSM onClose={() => setMostrarCalculadora(false)} />
       )}
