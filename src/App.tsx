@@ -508,6 +508,7 @@ function App() {
                 </div>
               </div>
             </div>
+              {/* Proyecto 4: Consecionaria */}
            <div 
               className={`bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-500 hover:scale-[1.02] mb-12 ${
                 visibleSections.has('projects') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
@@ -517,7 +518,7 @@ function App() {
                 <div className="space-y-6">
                   <h3 className="text-3xl sm:text-4xl font-bold text-white mb-4 flex items-center">
                     <Code className="w-10 h-10 mr-4 text-blue-400" />
-                    DentalSystem
+                   Consecionaria
                   </h3>
                   <p className="text-gray-200 text-lg leading-relaxed">
                     Consecionaria es una aplicación web diseñada específicamente para consecionarias, con el objetivo de optimizar las ventas, tiene
@@ -563,7 +564,7 @@ function App() {
                     <div className="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
                     <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
                       <img 
-                        src={cap2} 
+                        src={cap1} 
                         alt="Captura de pantalla "                        
                         className="w-full h-48 object-cover rounded-xl"
                       />
@@ -573,7 +574,7 @@ function App() {
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
                     <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
                       <img 
-                        src={cap3} 
+                        src={cap2} 
                         alt="Captura de pantalla " 
                         className="w-full h-48 object-cover rounded-xl"
                       />
