@@ -1,10 +1,10 @@
-0import React, { useState, useEffect, useRef } from 'react';
-import { Heart, Instagram, Facebook, MessageCircle, Mail, ExternalLink, Code, Database, Smartphone, Monitor, Star, Moon, Cloud, Cpu, Network, Calculator } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Heart, Instagram, Facebook, MessageCircle, Mail, ExternalLink, Code, Database, Smartphone, Monitor, Star, Moon, Cloud, Cpu, Network, Calculator, Clock } from 'lucide-react';
 import fotoPerfil from './assets/fotoPerfil1.jpg';
 
-import cap from '.assets/Captura de pantalla 2025-12-16 154156.png';
-import cap1 from '.assets/Captura de pantalla 2025-12-16 154428.png';
-import cap2 from '.assets/Captura de pantalla 2025-12-16 154608.png';
+import cap from './assets/Captura de pantalla 2025-12-16 154156.png';
+import cap1 from './assets/Captura de pantalla 2025-12-16 154428.png';
+import cap2 from './assets/Captura de pantalla 2025-12-16 154608.png';
 
 import captura from './assets/Captura de pantalla 2025-07-17 220850.jpg';
 import captura1 from './assets/Captura de pantalla 2025-07-17 220822.jpg';
@@ -13,6 +13,8 @@ import chili2 from './assets/chili2.jpg';
 import vibras1 from './assets/vibras1.jpg';
 import vibras2 from './assets/vibras2.jpg';
 import vlsmCaptura from './assets/calculadora-vlsm.png';
+import sinCity1 from './assets/1000003394.png';
+import sinCity2 from './assets/1000003395 (1).png';
 import CalculadoraVLSM from './components/CalculadoraVLSM';
 
 function App() {
@@ -508,8 +510,9 @@ function App() {
                 </div>
               </div>
             </div>
-              {/* Proyecto 4: Consecionaria */}
-           <div 
+
+            {/* Proyecto 4: Concesionaria */}
+            <div 
               className={`bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-500 hover:scale-[1.02] mb-12 ${
                 visibleSections.has('projects') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
               }`}
@@ -518,16 +521,16 @@ function App() {
                 <div className="space-y-6">
                   <h3 className="text-3xl sm:text-4xl font-bold text-white mb-4 flex items-center">
                     <Code className="w-10 h-10 mr-4 text-blue-400" />
-                   Consecionaria
+                    Concesionaria
                   </h3>
                   <p className="text-gray-200 text-lg leading-relaxed">
-                    Consecionaria es una aplicación web diseñada específicamente para consecionarias, con el objetivo de optimizar las ventas, tiene
+                    Concesionaria es una aplicación web diseñada específicamente para concesionarias, con el objetivo de optimizar las ventas, tiene
                     base de datos lo que hace que el cliente no dependa de terceros, puede subir fotos de nuevos autos, motos, etc, eliminar y editar las descripciones
-                    tambien posee una busqueda por filtro optimizada.
+                    también posee una búsqueda por filtro optimizada.
                   </p>
                   
                   <div className="flex flex-wrap gap-3">
-                    {['Html','tailwindscss', 'TypeScript', 'SQLite'].map((tech) => (
+                    {['Html', 'Tailwind CSS', 'TypeScript', 'SQLite'].map((tech) => (
                       <span 
                         key={tech}
                         className="px-4 py-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-200 rounded-full text-sm border border-blue-400/30 hover:scale-105 transition-transform duration-300"
@@ -548,24 +551,13 @@ function App() {
                   </a>
                 </div>
                 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-4">
                   <div className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
                     <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
                       <img 
                         src={cap} 
-                        alt="Captura de pantalla "                        
-                        className="w-full h-48 object-cover rounded-xl"
-                      />
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="relative group">
-                    <div className="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
-                    <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
-                      <img 
-                        src={cap1} 
-                        alt="Captura de pantalla "                        
+                        alt="Captura de pantalla Concesionaria"                        
                         className="w-full h-48 object-cover rounded-xl"
                       />
                     </div>
@@ -574,8 +566,18 @@ function App() {
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
                     <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
                       <img 
+                        src={cap1} 
+                        alt="Captura de pantalla Concesionaria"                        
+                        className="w-full h-48 object-cover rounded-xl"
+                      />
+                    </div>
+                  </div>
+                  <div className="relative group col-span-2">
+                    <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
+                    <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
+                      <img 
                         src={cap2} 
-                        alt="Captura de pantalla " 
+                        alt="Captura de pantalla Concesionaria" 
                         className="w-full h-48 object-cover rounded-xl"
                       />
                     </div>
@@ -583,7 +585,72 @@ function App() {
                 </div>
               </div>
             </div>
-            {/* Proyecto 5: Calculadora VLSM */}
+
+            {/* Proyecto 5: Sin City Burgers */}
+            <div 
+              className={`bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-500 hover:scale-[1.02] mb-12 ${
+                visibleSections.has('projects') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
+              }`}
+            >
+              <div className="grid lg:grid-cols-2 gap-8 items-center">
+                <div className="space-y-6">
+                  <h3 className="text-3xl sm:text-4xl font-bold text-white mb-4 flex items-center">
+                    <Clock className="w-10 h-10 mr-4 text-yellow-400" />
+                    Sin City Burgers
+                  </h3>
+                  <p className="text-gray-200 text-lg leading-relaxed">
+                    Sin City Burgers es una landing page diseñada para un negocio de hamburguesas, con el objetivo de optimizar la presencia online y facilitar los pedidos.  
+                    La plataforma muestra el menú, horarios, métodos de pago y enlaces directos a WhatsApp, Instagram y Facebook para realizar pedidos de manera rápida y sencilla.
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-3">
+                    {['React', 'TypeScript', 'Tailwind CSS', 'Lucide Icons'].map((tech) => (
+                      <span 
+                        key={tech}
+                        className="px-4 py-2 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 text-yellow-200 rounded-full text-sm border border-yellow-400/30 hover:scale-105 transition-transform duration-300"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  
+                  <a 
+                    href="https://sin-city-burgers.netlify.app" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-yellow-500 to-orange-600 text-white rounded-full hover:from-yellow-600 hover:to-orange-700 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-yellow-500/25"
+                  >
+                    <ExternalLink className="w-5 h-5 mr-2" />
+                    Ver Proyecto
+                  </a>
+                </div>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="relative group">
+                    <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
+                    <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
+                      <img 
+                        src={sinCity1} 
+                        alt="Captura de pantalla Sin City Burgers"                        
+                        className="w-full h-48 object-cover rounded-xl"
+                      />
+                    </div>
+                  </div>
+                  <div className="relative group">
+                    <div className="absolute inset-0 bg-gradient-to-r from-red-400 to-orange-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
+                    <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
+                      <img 
+                        src={sinCity2} 
+                        alt="Captura de pantalla Sin City Burgers" 
+                        className="w-full h-48 object-cover rounded-xl"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Proyecto 6: Calculadora VLSM */}
             <div 
               className={`bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-500 hover:scale-[1.02] ${
                 visibleSections.has('projects') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
