@@ -615,7 +615,7 @@ function App() {
                   </div>
                   
                   <a 
-                    href="https://sin-city-burgers.netlify.app" 
+                    href="https://sincitysantarosa.netlify.app" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-yellow-500 to-orange-600 text-white rounded-full hover:from-yellow-600 hover:to-orange-700 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-yellow-500/25"
@@ -777,7 +777,7 @@ function App() {
       <footer className="py-8 border-t border-white/10 bg-black/20 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-gray-300 flex items-center justify-center">
-            © 2025 Romina Celis. Hecho con 
+            © 2026 Romina Celis. Hecho con 
             <Heart className="w-4 h-4 inline mx-2 text-pink-400 animate-pulse" />
             y mucho código.
           </p>
