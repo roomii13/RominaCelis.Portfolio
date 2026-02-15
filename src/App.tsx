@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Heart, Instagram, Facebook, MessageCircle, Mail, ExternalLink, Code, Database, Smartphone, Monitor, Star, Moon, Cloud, Cpu, Network, Calculator, Clock } from 'lucide-react';
+import { Heart, Instagram, Facebook, MessageCircle, Mail, ExternalLink, Code, Database, Smartphone, Monitor, Star, Moon, Cloud, Cpu, Network, Calculator, Clock, ShoppingCart } from 'lucide-react';
 import fotoPerfil from './assets/fotoPerfil1.jpg';
 
 import cap from './assets/Captura de pantalla 2025-12-16 154156.png';
@@ -586,70 +586,94 @@ function App() {
               </div>
             </div>
 
-            {/* Proyecto 5: Sin City Burgers */}
-            <div 
-              className={`bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-500 hover:scale-[1.02] mb-12 ${
-                visibleSections.has('projects') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
-              }`}
-            >
-              <div className="grid lg:grid-cols-2 gap-8 items-center">
-                <div className="space-y-6">
-                  <h3 className="text-3xl sm:text-4xl font-bold text-white mb-4 flex items-center">
-                    <Clock className="w-10 h-10 mr-4 text-yellow-400" />
-                    Sin City Burgers
-                  </h3>
-                  <p className="text-gray-200 text-lg leading-relaxed">
-                    Sin City Burgers es una landing page diseñada para un negocio de hamburguesas, con el objetivo de optimizar la presencia online y facilitar los pedidos.  
-                    La plataforma muestra el menú, horarios, métodos de pago y enlaces directos a WhatsApp, Instagram y Facebook para realizar pedidos de manera rápida y sencilla.
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-3">
-                    {['React', 'TypeScript', 'Tailwind CSS', 'Lucide Icons'].map((tech) => (
-                      <span 
-                        key={tech}
-                        className="px-4 py-2 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 text-yellow-200 rounded-full text-sm border border-yellow-400/30 hover:scale-105 transition-transform duration-300"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  
-                  <a 
-                    href="https://sincitysantarosa.netlify.app" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-yellow-500 to-orange-600 text-white rounded-full hover:from-yellow-600 hover:to-orange-700 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-yellow-500/25"
-                  >
-                    <ExternalLink className="w-5 h-5 mr-2" />
-                    Ver Proyecto
-                  </a>
-                </div>
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="relative group">
-                    <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
-                    <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
-                      <img 
-                        src={sinCity1} 
-                        alt="Captura de pantalla Sin City Burgers"                        
-                        className="w-full h-48 object-cover rounded-xl"
-                      />
-                    </div>
-                  </div>
-                  <div className="relative group">
-                    <div className="absolute inset-0 bg-gradient-to-r from-red-400 to-orange-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
-                    <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
-                      <img 
-                        src={sinCity2} 
-                        alt="Captura de pantalla Sin City Burgers" 
-                        className="w-full h-48 object-cover rounded-xl"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
+{/* Proyecto 5: Sin City Burgers - E-commerce */}
+<div 
+  className={`bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-500 hover:scale-[1.02] mb-12 ${
+    visibleSections.has('projects') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
+  }`}
+>
+  <div className="grid lg:grid-cols-2 gap-8 items-center">
+    <div className="space-y-6">
+      <h3 className="text-3xl sm:text-4xl font-bold text-white mb-4 flex items-center">
+        <ShoppingCart className="w-10 h-10 mr-4 text-yellow-400" />
+        Sin City Burgers
+      </h3>
+      <p className="text-gray-200 text-lg leading-relaxed">
+        Sin City Burgers es un e-commerce completo desarrollado con TypeScript y React, diseñado específicamente para un negocio de hamburguesas. 
+        La plataforma cuenta con un sistema de carrito de compras funcional que permite a los clientes agregar productos, modificar cantidades, 
+        calcular totales y gestionar su pedido de manera intuitiva antes de finalizar la compra.
+      </p>
+      
+      <div className="space-y-4">
+        <h4 className="text-white font-semibold text-lg">Características del e-commerce:</h4>
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          <li className="text-gray-300 text-sm flex items-center gap-2">
+            <span className="text-yellow-400">✓</span> Carrito de compras funcional
+          </li>
+          <li className="text-gray-300 text-sm flex items-center gap-2">
+            <span className="text-yellow-400">✓</span> Catálogo de productos
+          </li>
+          <li className="text-gray-300 text-sm flex items-center gap-2">
+            <span className="text-yellow-400">✓</span> Gestión de cantidades
+          </li>
+          <li className="text-gray-300 text-sm flex items-center gap-2">
+            <span className="text-yellow-400">✓</span> Cálculo automático de totales
+          </li>
+          <li className="text-gray-300 text-sm flex items-center gap-2">
+            <span className="text-yellow-400">✓</span> Integración con WhatsApp para pedidos
+          </li>
+          <li className="text-gray-300 text-sm flex items-center gap-2">
+            <span className="text-yellow-400">✓</span> Diseño responsive y moderno
+          </li>
+        </ul>
+      </div>
+      
+      <div className="flex flex-wrap gap-3 mt-4">
+        {['TypeScript', 'React', 'Tailwind CSS', 'Context API', 'Lucide Icons', 'Carrito de Compras'].map((tech) => (
+          <span 
+            key={tech}
+            className="px-4 py-2 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 text-yellow-200 rounded-full text-sm border border-yellow-400/30 hover:scale-105 transition-transform duration-300"
+          >
+            {tech}
+          </span>
+        ))}
+      </div>
+      
+      <a 
+        href="https://sincitysantarosa.netlify.app" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-yellow-500 to-orange-600 text-white rounded-full hover:from-yellow-600 hover:to-orange-700 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-yellow-500/25 mt-4"
+      >
+        <ExternalLink className="w-5 h-5 mr-2" />
+        Ver E-commerce
+      </a>
+    </div>
+    
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="relative group">
+        <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
+        <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
+          <img 
+            src={sinCity1} 
+            alt="Captura de pantalla Sin City Burgers - E-commerce"                        
+            className="w-full h-48 object-cover rounded-xl"
+          />
+        </div>
+      </div>
+      <div className="relative group">
+        <div className="absolute inset-0 bg-gradient-to-r from-red-400 to-orange-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
+        <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
+          <img 
+            src={sinCity2} 
+            alt="Captura de pantalla Sin City Burgers - Carrito" 
+            className="w-full h-48 object-cover rounded-xl"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
             {/* Proyecto 6: Calculadora VLSM */}
             <div 
               className={`bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-500 hover:scale-[1.02] ${
