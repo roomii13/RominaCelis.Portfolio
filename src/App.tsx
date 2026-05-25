@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Heart, Instagram, Facebook, MessageCircle, Mail, ExternalLink, Code, Database, Smartphone, Monitor, Star, Moon, Cloud, Cpu, Network, Calculator, Clock, ShoppingCart } from 'lucide-react';
+import { Heart, Instagram, Facebook, MessageCircle, Mail, ExternalLink, Code, Database, Cpu, Calculator, ShoppingCart } from 'lucide-react';
 import fotoPerfil from './assets/fotoPerfil1.jpg';
 
 import cap from './assets/Captura de pantalla 2025-12-16 154156.png';

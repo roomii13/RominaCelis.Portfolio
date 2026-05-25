@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title>Romina Celis</title>
+  <rect width="64" height="64" rx="14" fill="#111827"/>
+  <path fill="#ec4899" d="M18 47V17h15c7 0 12 4 12 10 0 4-2 7-6 9l8 11H36l-7-10h-2v10H18Zm9-17h5c3 0 5-1 5-4s-2-4-5-4h-5v8Z"/>
+  <path fill="#22d3ee" d="M45 19a16 16 0 1 0 0 26l-5-6a8 8 0 1 1 0-14l5-6Z"/>
+</svg>
