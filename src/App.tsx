@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Heart, Instagram, Facebook, MessageCircle, Mail, ExternalLink, Code, Database, Cpu, Calculator, ShoppingCart } from 'lucide-react';
+import { Heart, Instagram, Facebook, MessageCircle, Mail, ExternalLink, Code, Database, Cpu, Calculator, ShoppingCart, Plane } from 'lucide-react';
 import fotoPerfil from './assets/fotoPerfil1.jpg';
 
 import cap from './assets/Captura de pantalla 2025-12-16 154156.png';
@@ -15,6 +15,16 @@ import vibras2 from './assets/vibras2.jpg';
 import vlsmCaptura from './assets/calculadora-vlsm.png';
 import sinCity1 from './assets/1000003394.png';
 import sinCity2 from './assets/1000003395 (1).png';
+import aspredictiveDashboard from './assets/aspredictive-dashboard.png';
+import aspredictiveAlerts from './assets/aspredictive-alerts.png';
+import aspredictiveLogin from './assets/aspredictive-login.png';
+import numiProfile from './assets/numi-profile.png';
+import numiDashboard from './assets/numi-dashboard.png';
+import numiSubjects from './assets/numi-subjects.png';
+import comunidadAeroIcon from './assets/comunidad-aeronautica-icon.png';
+import comunidadAeroScreen1 from './assets/comunidad-aeronautica-screen-1.png';
+import comunidadAeroScreen2 from './assets/comunidad-aeronautica-screen-2.png';
+import comunidadAeroScreen3 from './assets/comunidad-aeronautica-screen-3.png';
 import CalculadoraVLSM from './components/CalculadoraVLSM';
 
 function App() {
@@ -674,7 +684,262 @@ function App() {
     </div>
   </div>
 </div>
-            {/* Proyecto 6: Calculadora VLSM */}
+
+            {/* Proyecto 6: AsPredictive */}
+            <div
+              id="aspredictive"
+              className={`scroll-mt-24 bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-500 hover:scale-[1.02] mb-12 ${
+                visibleSections.has('projects') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
+              }`}
+            >
+              <div className="grid lg:grid-cols-2 gap-8 items-center">
+                <div className="space-y-6">
+                  <h3 className="text-2xl sm:text-4xl font-bold text-white mb-4 flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 leading-tight">
+                    <Cpu className="w-10 h-10 text-cyan-300 flex-shrink-0 sm:mt-1" />
+                    <span className="min-w-0 break-words">AsPredictive</span>
+                  </h3>
+                  <p className="text-gray-200 text-lg leading-relaxed">
+                    AsPredictive es una plataforma web de seguridad operacional y analítica predictiva para monitorear incidentes, alertas activas y trazabilidad institucional desde un tablero centralizado.
+                  </p>
+                  <p className="text-gray-300 text-base leading-relaxed">
+                    Integra indicadores de riesgo 24h, seguimiento de aeropuertos, amenazas operacionales y acciones sugeridas para que los equipos puedan resolver eventos con contexto y continuidad.
+                  </p>
+
+                  <div className="flex flex-wrap gap-3">
+                    {['Aplicación web', 'Cloudflare Pages', 'Dashboard', 'Alertas', 'Analítica predictiva'].map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-4 py-2 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 text-cyan-100 rounded-full text-sm border border-cyan-400/30 hover:scale-105 transition-transform duration-300"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <a
+                    href="https://aspredictive.pages.dev/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full hover:from-cyan-600 hover:to-blue-700 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-cyan-500/25"
+                  >
+                    <ExternalLink className="w-5 h-5 mr-2" />
+                    Ver AsPredictive
+                  </a>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="relative group">
+                    <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
+                    <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500 overflow-hidden">
+                      <img
+                        src={aspredictiveDashboard}
+                        alt="Tablero principal de AsPredictive"
+                        className="w-full h-64 object-cover object-left rounded-xl"
+                      />
+                      <div className="absolute left-5 bottom-5 rounded-2xl bg-slate-950/80 p-4 border border-white/15 backdrop-blur-md">
+                        <p className="text-white font-semibold leading-tight">Vigilancia predictiva</p>
+                        <p className="text-cyan-200 text-sm">Riesgo operacional y alertas</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div className="relative group">
+                      <div className="absolute inset-0 bg-gradient-to-r from-amber-400 to-orange-500 rounded-2xl blur opacity-60 group-hover:opacity-90 transition duration-500" />
+                      <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
+                        <img
+                          src={aspredictiveAlerts}
+                          alt="Vista de alertas de AsPredictive"
+                          className="w-full h-40 object-cover object-left-top rounded-xl"
+                        />
+                      </div>
+                    </div>
+                    <div className="relative group">
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-2xl blur opacity-60 group-hover:opacity-90 transition duration-500" />
+                      <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
+                        <img
+                          src={aspredictiveLogin}
+                          alt="Pantalla de acceso de AsPredictive"
+                          className="w-full h-40 object-cover object-top rounded-xl"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Proyecto 7: NumiApp */}
+            <div
+              id="numiapp"
+              className={`scroll-mt-24 bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-500 hover:scale-[1.02] mb-12 ${
+                visibleSections.has('projects') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
+              }`}
+            >
+              <div className="grid lg:grid-cols-2 gap-8 items-center">
+                <div className="space-y-6">
+                  <h3 className="text-2xl sm:text-4xl font-bold text-white mb-4 flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 leading-tight">
+                    <Code className="w-10 h-10 text-yellow-300 flex-shrink-0 sm:mt-1" />
+                    <span className="min-w-0 break-words">NumiApp</span>
+                  </h3>
+                  <p className="text-gray-200 text-lg leading-relaxed">
+                    NumiApp es una aplicación educativa móvil para aprender jugando, con perfiles guardados en el dispositivo y una experiencia visual pensada para chicos de primer ciclo.
+                  </p>
+                  <p className="text-gray-300 text-base leading-relaxed">
+                    La app organiza actividades por áreas como Matemáticas, Lengua, Ciencias Naturales y Ciencias Sociales, con progreso, premios, ranking y accesos para padres.
+                  </p>
+
+                  <div className="flex flex-wrap gap-3">
+                    {['React Native', 'Expo', 'TypeScript', 'Educación', 'Mobile'].map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-4 py-2 bg-gradient-to-r from-yellow-500/20 to-pink-500/20 text-yellow-100 rounded-full text-sm border border-yellow-400/30 hover:scale-105 transition-transform duration-300"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-yellow-500 to-pink-500 text-white rounded-full shadow-lg shadow-yellow-500/20">
+                    <Code className="w-5 h-5 mr-2" />
+                    App educativa mobile
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="relative group">
+                    <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-pink-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
+                    <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500 overflow-hidden">
+                      <img
+                        src={numiDashboard}
+                        alt="Dashboard de NumiApp"
+                        className="w-full h-72 object-cover object-top rounded-xl"
+                      />
+                      <div className="absolute left-5 bottom-5 rounded-2xl bg-slate-950/80 p-4 border border-white/15 backdrop-blur-md">
+                        <p className="text-white font-semibold leading-tight">Aprende jugando</p>
+                        <p className="text-yellow-200 text-sm">Actividades, logros y progreso</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div className="relative group">
+                      <div className="absolute inset-0 bg-gradient-to-r from-violet-400 to-indigo-500 rounded-2xl blur opacity-60 group-hover:opacity-90 transition duration-500" />
+                      <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
+                        <img
+                          src={numiProfile}
+                          alt="Selección de perfil de NumiApp"
+                          className="w-full h-48 object-cover object-top rounded-xl"
+                        />
+                      </div>
+                    </div>
+                    <div className="relative group">
+                      <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-lime-500 rounded-2xl blur opacity-60 group-hover:opacity-90 transition duration-500" />
+                      <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
+                        <img
+                          src={numiSubjects}
+                          alt="Materias educativas de NumiApp"
+                          className="w-full h-48 object-cover object-top rounded-xl"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Proyecto 8: Comunidad Aeronautica En Red */}
+            <div
+              id="comunidad-aeronautica-en-red"
+              className={`scroll-mt-24 bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-500 hover:scale-[1.02] mb-12 ${
+                visibleSections.has('projects') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
+              }`}
+            >
+              <div className="grid lg:grid-cols-2 gap-8 items-center">
+                <div className="space-y-6">
+                  <h3 className="text-2xl sm:text-4xl font-bold text-white mb-4 flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 leading-tight">
+                    <Plane className="w-10 h-10 text-sky-400 flex-shrink-0 sm:mt-1" />
+                    <span className="min-w-0 break-words">Comunidad Aeronáutica En Red</span>
+                  </h3>
+                  <p className="text-gray-200 text-lg leading-relaxed">
+                    Comunidad Aeronáutica En Red es una aplicación Android pensada para consultar aeródromos, frecuencias, servicios, combustibles, enlaces oficiales y documentación operativa desde una experiencia clara y rápida.
+                  </p>
+                  <p className="text-gray-300 text-base leading-relaxed">
+                    Centraliza herramientas como METAR en vivo, plan de vuelo, tráfico, NOTAM, biblioteca y accesos de comunidad para pilotos, estudiantes y entusiastas de la aviación.
+                  </p>
+
+                  <div className="flex flex-wrap gap-3">
+                    {['React Native', 'Expo', 'TypeScript', 'Android', 'Play Store'].map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-4 py-2 bg-gradient-to-r from-sky-500/20 to-emerald-500/20 text-sky-100 rounded-full text-sm border border-sky-400/30 hover:scale-105 transition-transform duration-300"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <a
+                    href="https://play.google.com/store/apps/details?id=com.comunidadaeronauticaenred.aero"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-sky-500 to-emerald-600 text-white rounded-full hover:from-sky-600 hover:to-emerald-700 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-sky-500/25"
+                  >
+                    <ExternalLink className="w-5 h-5 mr-2" />
+                    Ver en Play Store
+                  </a>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="relative group">
+                    <div className="absolute inset-0 bg-gradient-to-r from-sky-400 to-emerald-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
+                    <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500 overflow-hidden">
+                      <img
+                        src={comunidadAeroScreen1}
+                        alt="Captura de pantalla Comunidad Aeronáutica En Red"
+                        className="w-full h-64 object-cover rounded-xl"
+                      />
+                      <div className="absolute left-5 bottom-5 flex items-center gap-3 rounded-2xl bg-slate-950/80 p-3 border border-white/15 backdrop-blur-md">
+                        <img
+                          src={comunidadAeroIcon}
+                          alt="Icono Comunidad Aeronáutica En Red"
+                          className="w-14 h-14 rounded-2xl object-cover"
+                        />
+                        <div>
+                          <p className="text-white font-semibold leading-tight">Comunidad Aeronáutica</p>
+                          <p className="text-sky-200 text-sm">Disponible en Google Play</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div className="relative group">
+                      <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-2xl blur opacity-60 group-hover:opacity-90 transition duration-500" />
+                      <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
+                        <img
+                          src={comunidadAeroScreen2}
+                          alt="Vista de herramientas de Comunidad Aeronáutica En Red"
+                          className="w-full h-40 object-cover rounded-xl"
+                        />
+                      </div>
+                    </div>
+                    <div className="relative group">
+                      <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-lime-500 rounded-2xl blur opacity-60 group-hover:opacity-90 transition duration-500" />
+                      <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
+                        <img
+                          src={comunidadAeroScreen3}
+                          alt="Vista de comunidad de Comunidad Aeronáutica En Red"
+                          className="w-full h-40 object-cover rounded-xl"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Proyecto 9: Calculadora VLSM */}
             <div 
               className={`bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-500 hover:scale-[1.02] ${
                 visibleSections.has('projects') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
