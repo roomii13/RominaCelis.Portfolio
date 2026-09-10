@@ -777,13 +777,9 @@ function isValidIPv4(ip) {
 }
 
 function isValidCIDR(cidr) {
-  const parts = cidr.split('/');
-  if (parts.length !== 2) return false;
-  
-  if (!isValidIPv4(parts[0])) return false;
-  
-  const prefix = parseInt(parts[1], 10);
-  return !isNaN(prefix) && prefix >= 0 && prefix <= 32;
+  if (typeof cidr !== 'string') return false;
+  const match = cidr.match(/^([^/]+)\\/(0|[1-9]|[12]\\d|3[0-2])$/);
+  return Boolean(match && isValidIPv4(match[1]));
 }
 
 function ipToInt(ip) {
@@ -810,27 +806,13 @@ function hostsFromPrefix(prefix, allow31 = true, allow32 = true) {
 }
 
 function prefixForHostCount(hostsNeeded, allow31 = true, allow32 = true) {
-  if (hostsNeeded <= 0) return allow32 ? 32 : 31;
-  
-  if (hostsNeeded === 1 && allow32) return 32;
-  if (hostsNeeded === 2 && allow31) return 31;
-  if (hostsNeeded === 0 && allow31) return 31;
-  
-  const totalIPsNeeded = hostsNeeded + 2;
-  let bitsForHosts = Math.ceil(Math.log2(totalIPsNeeded));
-  
-  if (Math.pow(2, bitsForHosts) - 2 < hostsNeeded) {
-    bitsForHosts++;
+  for (let prefix = 32; prefix >= 0; prefix--) {
+    if (hostsFromPrefix(prefix, allow31, allow32) >= hostsNeeded) {
+      return prefix;
+    }
   }
-  
-  let prefix = 32 - bitsForHosts;
-  
-  const usableHosts = hostsFromPrefix(prefix, allow31, allow32);
-  if (usableHosts < hostsNeeded) {
-    prefix--;
-  }
-  
-  return Math.max(0, Math.min(32, prefix));
+
+  throw new Error('No existe una subred IPv4 con capacidad para ' + hostsNeeded + ' hosts.');
 }
 
 // Almacenamiento simple en memoria
@@ -864,35 +846,38 @@ const memoryStorage = {
 let currentResults = null;
 let calculationHistory = [];
 
+function normalizeRequirements(requirements) {
+  if (!Array.isArray(requirements) || requirements.length === 0) {
+    throw new Error('Ingrese al menos un requisito de hosts.');
+  }
+
+  return requirements.map((value, index) => {
+    const rawValue = String(value).trim();
+    const hosts = Number(rawValue);
+
+    if (!/^\\d+$/.test(rawValue) || !Number.isSafeInteger(hosts) || hosts < 1) {
+      throw new Error('El requisito ' + (index + 1) + ' debe ser un número entero mayor que cero.');
+    }
+
+    return { origIndex: index, hosts, label: 'S' + (index + 1) };
+  });
+}
+
 function calculateVLSM(baseCidr, requirements, order = 'desc', allow31 = true, allow32 = true) {
   if (!isValidCIDR(baseCidr)) {
     throw new Error('Formato de red base inválido. Use: IP/Prefijo (ej: 192.168.0.0/24)');
   }
   
   const [baseIp, basePrefixStr] = baseCidr.split('/');
-  const basePrefix = parseInt(basePrefixStr, 10);
+  const basePrefix = Number(basePrefixStr);
   const baseInt = ipToInt(baseIp);
   const baseBlock = Math.pow(2, 32 - basePrefix);
-  const baseNetwork = (Math.floor(baseInt / baseBlock) * baseBlock) >>> 0;
-  const baseBroadcast = (baseNetwork + baseBlock - 1) >>> 0;
+  const baseNetwork = Math.floor(baseInt / baseBlock) * baseBlock;
+  const baseEnd = baseNetwork + baseBlock;
+  const baseBroadcast = baseEnd - 1;
   
-  let reqs = requirements
-    .map((r, idx) => ({
-      origIndex: idx,
-      hosts: Math.max(0, parseInt(r, 10)),
-      label: 'S' + (idx + 1)
-    }))
-    .filter(r => !isNaN(r.hosts));
-  
-  if (reqs.length === 0) {
-    throw new Error('No hay requisitos válidos de hosts');
-  }
-  
-  if (order === 'desc') {
-    reqs.sort((a, b) => b.hosts - a.hosts);
-  } else if (order === 'asc') {
-    reqs.sort((a, b) => a.hosts - b.hosts);
-  }
+  const reqs = normalizeRequirements(requirements);
+  const allocationOrder = [...reqs].sort((a, b) => b.hosts - a.hosts || a.origIndex - b.origIndex);
   
   let current = baseNetwork;
   const results = [];
@@ -901,21 +886,23 @@ function calculateVLSM(baseCidr, requirements, order = 'desc', allow31 = true, a
     '#06b6d4', '#84cc16', '#f97316', '#ec4899', '#6366f1'
   ];
   
-  for (let i = 0; i < reqs.length; i++) {
-    const r = reqs[i];
+  for (let i = 0; i < allocationOrder.length; i++) {
+    const r = allocationOrder[i];
     const pref = prefixForHostCount(r.hosts, allow31, allow32);
     const size = Math.pow(2, 32 - pref);
-    
-    const alignedNetwork = (Math.floor(current / size) * size) >>> 0;
-    let net = alignedNetwork < current ? (alignedNetwork + size) >>> 0 : alignedNetwork;
-    const broadcast = (net + size - 1) >>> 0;
-    
-    if (broadcast > baseBroadcast) {
+
+    const net = Math.ceil(current / size) * size;
+    const end = net + size;
+
+    if (net < baseNetwork || end > baseEnd) {
       throw new Error('Espacio insuficiente para subred que requiere ' + r.hosts + ' hosts.');
     }
-    
-    const firstUsable = pref <= 30 ? intToIp(net + 1) : 'N/A';
-    const lastUsable = pref <= 30 ? intToIp(broadcast - 1) : 'N/A';
+
+    const lastAddress = end - 1;
+    const isPointToPoint = pref === 31;
+    const isHostRoute = pref === 32;
+    const firstUsable = pref <= 30 ? intToIp(net + 1) : intToIp(net);
+    const lastUsable = pref <= 30 ? intToIp(lastAddress - 1) : intToIp(lastAddress);
     
     results.push({
       label: r.label,
@@ -923,36 +910,34 @@ function calculateVLSM(baseCidr, requirements, order = 'desc', allow31 = true, a
       assignedPrefix: pref,
       network: intToIp(net),
       mask: prefixToMask(pref),
-      broadcast: intToIp(broadcast),
+      broadcast: isPointToPoint || isHostRoute ? 'No aplica' : intToIp(lastAddress),
       firstUsable: firstUsable,
       lastUsable: lastUsable,
       usableHosts: hostsFromPrefix(pref, allow31, allow32),
       blockSize: size,
       color: colors[i % colors.length],
+      origIndex: r.origIndex,
       networkInt: net,
-      broadcastInt: broadcast
+      broadcastInt: lastAddress
     });
-    
-    current = (broadcast + 1) >>> 0;
+
+    current = end;
   }
-  
-  if (order === 'input') {
-    results.sort((a, b) => {
-      const aIdx = reqs.findIndex(r => r.label === a.label);
-      const bIdx = reqs.findIndex(r => r.label === b.label);
-      return aIdx - bIdx;
-    });
-  }
+
+  const assigned = [...results];
+  if (order === 'asc') assigned.sort((a, b) => a.requestedHosts - b.requestedHosts || a.origIndex - b.origIndex);
+  if (order === 'input') assigned.sort((a, b) => a.origIndex - b.origIndex);
+  const usedSpace = results.reduce((total, subnet) => total + subnet.blockSize, 0);
   
   currentResults = {
     baseNetwork: intToIp(baseNetwork),
     baseBroadcast: intToIp(baseBroadcast),
     basePrefix,
     totalHosts: hostsFromPrefix(basePrefix, allow31, allow32),
-    assigned: results,
-    usedSpace: current - baseNetwork,
+    assigned,
+    usedSpace,
     totalSpace: baseBlock,
-    utilization: ((current - baseNetwork) / baseBlock * 100).toFixed(2)
+    utilization: (usedSpace / baseBlock * 100).toFixed(2)
   };
   
   // Guardar en historial
@@ -1394,8 +1379,7 @@ function setupEventListeners() {
       if (!base) throw new Error('Ingrese la red base');
       if (!hostsRaw) throw new Error('Ingrese los requisitos de hosts');
       
-      const hostItems = hostsRaw.split(',').map(s => parseInt(s.trim(), 10)).filter(x => !isNaN(x));
-      if (hostItems.length === 0) throw new Error('No hay números válidos en la lista');
+      const hostItems = hostsRaw.split(',').map(s => s.trim());
       
       const result = calculateVLSM(base, hostItems, order, allow31, allow32);
       displayResults(result);
