@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Heart, Instagram, Facebook, MessageCircle, Mail, ExternalLink, Code, Database, Cpu, Calculator, ShoppingCart, Plane } from 'lucide-react';
+import { Heart, Instagram, Facebook, MessageCircle, Mail, ExternalLink, Code, Database, Cpu, Calculator, ShoppingCart, Plane, Github, Linkedin, Download } from 'lucide-react';
 import fotoPerfil from './assets/fotoPerfil1.jpg';
 
 import cap from './assets/Captura de pantalla 2025-12-16 154156.png';
@@ -18,6 +18,7 @@ import sinCity2 from './assets/1000003395 (1).png';
 import aspredictiveDashboard from './assets/aspredictive-dashboard.png';
 import aspredictiveAlerts from './assets/aspredictive-alerts.png';
 import aspredictiveLogin from './assets/aspredictive-login.png';
+import ofiaiDashboard from './assets/ofiai-dashboard.png';
 import numiProfile from './assets/numi-profile.png';
 import numiDashboard from './assets/numi-dashboard.png';
 import numiSubjects from './assets/numi-subjects.png';
@@ -58,20 +59,11 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const skills = [
-    { name: 'React', icon: '⚛️', level: 90, color: 'from-blue-400 to-cyan-500' },
-    { name: 'Angular', icon: '🅰️', level: 85, color: 'from-red-400 to-pink-500' },
-    { name: 'JavaScript', icon: '🟨', level: 95, color: 'from-yellow-400 to-orange-500' },
-    { name: 'TypeScript', icon: '🔷', level: 90, color: 'from-blue-500 to-indigo-600' },
-    { name: 'HTML', icon: '🌐', level: 95, color: 'from-orange-400 to-red-500' },
-    { name: 'CSS', icon: '🎨', level: 90, color: 'from-pink-400 to-purple-500' },
-    { name: 'C', icon: '⚙️', level: 80, color: 'from-gray-400 to-gray-600' },
-    { name: 'C++', icon: '⚡', level: 85, color: 'from-blue-400 to-purple-500' },
-    { name: 'C#', icon: '💜', level: 80, color: 'from-purple-400 to-indigo-500' },
-    { name: 'Java', icon: '☕', level: 85, color: 'from-orange-400 to-red-600' },
-    { name: 'SQL', icon: '🗄️', level: 88, color: 'from-green-400 to-blue-500' },
-    { name: 'Python', icon: '🐍', level: 40, color: 'from-red-500 to-pink-600' },
-    { name: 'Networking', icon: '🔌', level: 75, color: 'from-green-400 to-emerald-500' },
+  const skillGroups = [
+    { title: 'Frontend', icon: Code, color: 'text-cyan-300', skills: ['React', 'Angular', 'JavaScript', 'TypeScript', 'HTML', 'CSS'] },
+    { title: 'Backend', icon: Cpu, color: 'text-purple-300', skills: ['Java', 'Node.js', 'Express', 'C#', 'C++', 'C', 'Python'] },
+    { title: 'Bases de datos', icon: Database, color: 'text-emerald-300', skills: ['SQL', 'PostgreSQL'] },
+    { title: 'Herramientas y redes', icon: Calculator, color: 'text-pink-300', skills: ['Git', 'Cloudflare Pages', 'Expo', 'Tailwind CSS', 'Networking'] },
   ];
 
   const setSectionRef = (key: string) => (el: HTMLElement | null) => {
@@ -140,7 +132,7 @@ function App() {
             </div>
             <div className="flex items-center space-x-3 sm:space-x-4">
               <a 
-                href="https://wa.me/5492954446198" 
+                href="https://wa.me/5492954744019"
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-green-500/20 hover:bg-green-500/40 transition-all duration-300 hover:scale-110 backdrop-blur-sm"
@@ -178,14 +170,15 @@ function App() {
             }`}
           >
             <div className="relative mb-8">
-              <h1 className="text-6xl sm:text-8xl lg:text-9xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-cyan-400 mb-4">
-                PORTFOLIO
+              <h1 className="max-w-5xl px-4 text-5xl sm:text-7xl lg:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-cyan-400 mb-4">
+                Transformo ideas en aplicaciones web reales.
               </h1>
               <div className="absolute -inset-4 bg-gradient-to-r from-pink-400/20 via-purple-400/20 to-cyan-400/20 blur-xl rounded-full" />
             </div>
             <p className="text-xl sm:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto px-4">
-              Desarrolladora Full Stack / Creativa Digital
+              Soy Romina Celis, desarrolladora Full Stack. Creo soluciones con React, Angular, Java y tecnologías modernas, con foco en productos útiles, escalables y fáciles de usar.
             </p>
+            <p className="text-sm sm:text-base text-cyan-200 mb-8 px-4 tracking-wide">Frontend <span className="text-purple-300">·</span> Backend <span className="text-purple-300">·</span> Bases de datos</p>
             <div className="flex justify-center space-x-4">
               <div className="w-2 h-2 bg-pink-400 rounded-full animate-bounce" />
               <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce delay-100" />
@@ -219,14 +212,34 @@ function App() {
                   <p className="text-lg sm:text-xl text-gray-200 leading-relaxed mb-8">
                     Soy creativa y super curiosa, me gusta saber como funciona todo, es emocionante ver evolucionar una idea pero puede ser aún más emocionante estar involucrada en ver cómo se diseña y desarrolla un concepto a través de la codificación y poder ver el ciclo de vida completo.
                   </p>
+                  <p className="text-base sm:text-lg text-gray-300 leading-relaxed mb-6">
+                    Me gusta entender el problema antes de elegir la solución, aprender durante el proceso y cuidar los detalles que hacen que un producto sea claro y agradable de usar. Disfruto colaborar, compartir avances y acompañar cada idea desde el diseño hasta una aplicación funcional.
+                  </p>
+                  <div className="flex flex-wrap justify-center lg:justify-start gap-2 mb-8">
+                    {['Curiosidad', 'Aprendizaje continuo', 'Experiencia de usuario'].map((value) => (
+                      <span key={value} className="px-3 py-2 rounded-full text-sm text-purple-100 bg-purple-500/15 border border-purple-300/20">{value}</span>
+                    ))}
+                  </div>
                   <div className="flex flex-col sm:flex-row gap-4">
                     <a 
-                      href="mailto:rom-cel@live.com.ar"
+                      href="mailto:romina.celis33@gmail.com"
                       className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-full hover:from-pink-600 hover:to-purple-700 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-pink-500/25"
                     >
                       <Mail className="w-5 h-5 mr-2" />
                       Contáctame
                     </a>
+                    <a
+                      href="/CV_Romina_Celis2026-rc.pdf"
+                      download
+                      className="inline-flex items-center justify-center px-8 py-4 bg-white/10 text-white rounded-full border border-white/15 hover:bg-white/15 transition-all duration-300 hover:scale-105"
+                    >
+                      <Download className="w-5 h-5 mr-2" />
+                      Descargar CV
+                    </a>
+                  </div>
+                  <div className="flex justify-center lg:justify-start gap-3 mt-5">
+                    <a href="https://github.com/roomii13" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Romina Celis" className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm text-gray-200 bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"><Github className="w-4 h-4" /> GitHub</a>
+                    <a href="https://www.linkedin.com/in/romi-celis/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Romina Celis" className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm text-gray-200 bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"><Linkedin className="w-4 h-4" /> LinkedIn</a>
                   </div>
                 </div>
               </div>
@@ -237,9 +250,9 @@ function App() {
                 }`}
               >
                 <div className="relative">
-                  <div className="w-80 h-80 rounded-full bg-gradient-to-br from-pink-400 via-purple-500 to-cyan-600 p-2 animate-pulse">
+                  <div className="w-64 h-64 sm:w-80 sm:h-80 rounded-full bg-gradient-to-br from-pink-400 via-purple-500 to-cyan-600 p-2 animate-pulse">
                     <div className="w-full h-full rounded-full bg-gray-900 flex items-center justify-center overflow-hidden">
-                      <img 
+                      <img loading="lazy"
                         src={fotoPerfil} 
                         alt="Romina Celis" 
                         className="w-full h-full object-cover rounded-full hover:scale-110 transition-transform duration-500"
@@ -276,37 +289,19 @@ function App() {
               <div className="w-32 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 mx-auto rounded-full" />
             </div>
             
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-              {skills.map((skill, index) => (
-                <div 
-                  key={skill.name}
-                  className={`bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-500 hover:scale-105 group transform ${
-                    visibleSections.has('skills') 
-                      ? 'opacity-100 translate-y-0' 
-                      : 'opacity-0 translate-y-10'
-                  }`}
-                  style={{ 
-                    transitionDelay: `${index * 100}ms`,
-                    transform: visibleSections.has('skills') 
-                      ? `translateY(${Math.sin(scrollY * 0.01 + index) * 5}px)` 
-                      : 'translateY(40px)'
-                  }}
+            <div className="grid sm:grid-cols-2 gap-6">
+              {skillGroups.map(({ title, icon: Icon, color, skills }, index) => (
+                <div
+                  key={title}
+                  className={`bg-white/5 backdrop-blur-xl rounded-2xl p-6 sm:p-8 border border-white/10 hover:bg-white/10 transition-all duration-500 ${visibleSections.has('skills') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                  style={{ transitionDelay: `${index * 100}ms` }}
                 >
-                  <div className="text-center">
-                    <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">
-                      {skill.icon}
-                    </div>
-                    <h3 className="text-white font-semibold text-base mb-4">{skill.name}</h3>
-                    <div className="w-full bg-gray-700/50 rounded-full h-2 mb-2">
-                      <div 
-                        className={`bg-gradient-to-r ${skill.color} h-2 rounded-full transition-all duration-2000 ease-out`}
-                        style={{ 
-                          width: visibleSections.has('skills') ? `${skill.level}%` : '0%',
-                          transitionDelay: `${index * 150}ms`
-                        }}
-                      />
-                    </div>
-                    <span className="text-xs text-gray-300">{skill.level}%</span>
+                  <div className="flex items-center gap-3 mb-5">
+                    <Icon className={`w-6 h-6 ${color}`} />
+                    <h3 className="text-xl font-semibold text-white">{title}</h3>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {skills.map((skill) => <span key={skill} className="px-3 py-2 rounded-full text-sm text-gray-200 bg-white/5 border border-white/10">{skill}</span>)}
                   </div>
                 </div>
               ))}
@@ -327,6 +322,30 @@ function App() {
                 Proyectos
               </h2>
               <div className="w-32 h-1 bg-gradient-to-r from-green-400 to-blue-400 mx-auto rounded-full" />
+            </div>
+
+            <div className="mb-16">
+              <p className="text-center text-sm font-semibold uppercase tracking-[0.2em] text-cyan-200 mb-6">Casos de estudio destacados</p>
+              <div className="grid md:grid-cols-3 gap-6">
+                {[
+                  { id: 'aspredictive', title: 'AsPREDICTIVE', image: aspredictiveDashboard, alt: 'Panel de análisis de riesgos de AsPREDICTIVE', text: 'Una plataforma para entender riesgos aeronáuticos y seguir alertas operacionales.' },
+                  { id: 'comunidad-aeronautica-en-red', title: 'Comunidad Aeronáutica en Red', image: comunidadAeroScreen1, alt: 'Aplicación Comunidad Aeronáutica en Red', text: 'Una app móvil y su backend que acercan herramientas aeronáuticas a la comunidad.' },
+                  { id: 'ofiai', title: 'OfiAI', image: ofiaiDashboard, alt: 'Panel de demo de OfiAI con datos ficticios', text: 'Un marketplace que conecta organizaciones y profesionales con herramientas de IA.' },
+                ].map((project, index) => (
+                  <a key={project.id} href={`#${project.id}`} className="group overflow-hidden rounded-3xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1">
+                    <div className="relative h-48 overflow-hidden">
+                      <img loading="lazy" src={project.image} alt={project.alt} className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" />
+                      <span className="absolute left-4 top-4 rounded-full bg-slate-950/80 px-3 py-1 text-xs font-semibold tracking-wide text-cyan-100 border border-white/15">{`0${index + 1} · DESTACADO`}</span>
+                      {project.id === 'ofiai' && <span className="absolute bottom-3 right-3 rounded-full bg-slate-950/85 px-3 py-1 text-xs text-amber-100 border border-amber-300/20">Demo · datos ficticios</span>}
+                    </div>
+                    <div className="p-5">
+                      <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
+                      <p className="text-sm leading-relaxed text-gray-300">{project.text}</p>
+                      <span className="inline-flex items-center gap-2 mt-4 text-sm text-cyan-200">Ver caso de estudio <ExternalLink className="w-4 h-4" /></span>
+                    </div>
+                  </a>
+                ))}
+              </div>
             </div>
             
             {/* Proyecto 1: DentalSystem */}
@@ -372,7 +391,7 @@ function App() {
                   <div className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
                     <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
-                      <img 
+                      <img loading="lazy"
                         src={captura1} 
                         alt="Captura de pantalla DentalSystem"                        
                         className="w-full h-48 object-cover rounded-xl"
@@ -382,7 +401,7 @@ function App() {
                   <div className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
                     <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
-                      <img 
+                      <img loading="lazy"
                         src={captura} 
                         alt="Captura de pantalla DentalSystem" 
                         className="w-full h-48 object-cover rounded-xl"
@@ -436,7 +455,7 @@ function App() {
                   <div className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
                     <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
-                      <img 
+                      <img loading="lazy"
                         src={chili1} 
                         alt="Captura de pantalla ChilliTattoo"                        
                         className="w-full h-48 object-cover rounded-xl"
@@ -446,7 +465,7 @@ function App() {
                   <div className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
                     <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
-                      <img 
+                      <img loading="lazy"
                         src={chili2} 
                         alt="Captura ChilliTattoo" 
                         className="w-full h-48 object-cover rounded-xl"
@@ -500,7 +519,7 @@ function App() {
                   <div className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
                     <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
-                      <img 
+                      <img loading="lazy"
                         src={vibras1} 
                         alt="Captura de pantalla Vibras"                        
                         className="w-full h-48 object-cover rounded-xl"
@@ -510,7 +529,7 @@ function App() {
                   <div className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
                     <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
-                      <img 
+                      <img loading="lazy"
                         src={vibras2} 
                         alt="Captura Vibras" 
                         className="w-full h-48 object-cover rounded-xl"
@@ -565,7 +584,7 @@ function App() {
                   <div className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
                     <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
-                      <img 
+                      <img loading="lazy"
                         src={cap} 
                         alt="Captura de pantalla Concesionaria"                        
                         className="w-full h-48 object-cover rounded-xl"
@@ -575,7 +594,7 @@ function App() {
                   <div className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
                     <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
-                      <img 
+                      <img loading="lazy"
                         src={cap1} 
                         alt="Captura de pantalla Concesionaria"                        
                         className="w-full h-48 object-cover rounded-xl"
@@ -585,7 +604,7 @@ function App() {
                   <div className="relative group col-span-2">
                     <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
                     <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
-                      <img 
+                      <img loading="lazy"
                         src={cap2} 
                         alt="Captura de pantalla Concesionaria" 
                         className="w-full h-48 object-cover rounded-xl"
@@ -664,7 +683,7 @@ function App() {
       <div className="relative group">
         <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
         <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
-          <img 
+          <img loading="lazy"
             src={sinCity1} 
             alt="Captura de pantalla Sin City Burgers - E-commerce"                        
             className="w-full h-48 object-cover rounded-xl"
@@ -674,7 +693,7 @@ function App() {
       <div className="relative group">
         <div className="absolute inset-0 bg-gradient-to-r from-red-400 to-orange-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
         <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
-          <img 
+          <img loading="lazy"
             src={sinCity2} 
             alt="Captura de pantalla Sin City Burgers - Carrito" 
             className="w-full h-48 object-cover rounded-xl"
@@ -696,7 +715,7 @@ function App() {
                 <div className="space-y-6">
                   <h3 className="text-2xl sm:text-4xl font-bold text-white mb-4 flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 leading-tight">
                     <Cpu className="w-10 h-10 text-cyan-300 flex-shrink-0 sm:mt-1" />
-                    <span className="min-w-0 break-words">AsPredictive</span>
+                    <span className="min-w-0 break-words">AsPREDICTIVE</span>
                   </h3>
                   <p className="text-gray-200 text-lg leading-relaxed">
                     AsPredictive es una plataforma web de seguridad operacional y analítica predictiva para monitorear incidentes, alertas activas y trazabilidad institucional desde un tablero centralizado.
@@ -704,9 +723,12 @@ function App() {
                   <p className="text-gray-300 text-base leading-relaxed">
                     Integra indicadores de riesgo 24h, seguimiento de aeropuertos, amenazas operacionales y acciones sugeridas para que los equipos puedan resolver eventos con contexto y continuidad.
                   </p>
+                  <p className="text-gray-300 text-base leading-relaxed">
+                    Mi foco fue convertir información dispersa en una vista de trabajo clara: un tablero central, alertas visibles y contexto para dar seguimiento a cada riesgo.
+                  </p>
 
                   <div className="flex flex-wrap gap-3">
-                    {['Aplicación web', 'Cloudflare Pages', 'Dashboard', 'Alertas', 'Analítica predictiva'].map((tech) => (
+                    {['Aplicación web', 'Cloudflare Pages', 'Analítica predictiva', 'Alertas operacionales'].map((tech) => (
                       <span
                         key={tech}
                         className="px-4 py-2 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 text-cyan-100 rounded-full text-sm border border-cyan-400/30 hover:scale-105 transition-transform duration-300"
@@ -731,7 +753,7 @@ function App() {
                   <div className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
                     <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500 overflow-hidden">
-                      <img
+                      <img loading="lazy"
                         src={aspredictiveDashboard}
                         alt="Tablero principal de AsPredictive"
                         className="w-full h-64 object-cover object-left rounded-xl"
@@ -747,7 +769,7 @@ function App() {
                     <div className="relative group">
                       <div className="absolute inset-0 bg-gradient-to-r from-amber-400 to-orange-500 rounded-2xl blur opacity-60 group-hover:opacity-90 transition duration-500" />
                       <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
-                        <img
+                        <img loading="lazy"
                           src={aspredictiveAlerts}
                           alt="Vista de alertas de AsPredictive"
                           className="w-full h-40 object-cover object-left-top rounded-xl"
@@ -757,7 +779,7 @@ function App() {
                     <div className="relative group">
                       <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-2xl blur opacity-60 group-hover:opacity-90 transition duration-500" />
                       <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
-                        <img
+                        <img loading="lazy"
                           src={aspredictiveLogin}
                           alt="Pantalla de acceso de AsPredictive"
                           className="w-full h-40 object-cover object-top rounded-xl"
@@ -800,9 +822,11 @@ function App() {
                     ))}
                   </div>
 
-                  <div className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-yellow-500 to-pink-500 text-white rounded-full shadow-lg shadow-yellow-500/20">
-                    <Code className="w-5 h-5 mr-2" />
-                    App educativa mobile
+                  <div className="flex flex-wrap gap-4 pt-2">
+                    <a href="https://play.google.com/store/apps/details?id=com.numiapp.kids" target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-7 py-4 bg-gradient-to-r from-yellow-500 to-pink-500 text-white rounded-full shadow-lg shadow-yellow-500/20 hover:scale-105 transition-transform">
+                      <ExternalLink className="w-5 h-5 mr-2" />
+                      Descargar en Play Store
+                    </a>
                   </div>
                 </div>
 
@@ -810,7 +834,7 @@ function App() {
                   <div className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-pink-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
                     <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500 overflow-hidden">
-                      <img
+                      <img loading="lazy"
                         src={numiDashboard}
                         alt="Dashboard de NumiApp"
                         className="w-full h-72 object-cover object-top rounded-xl"
@@ -826,7 +850,7 @@ function App() {
                     <div className="relative group">
                       <div className="absolute inset-0 bg-gradient-to-r from-violet-400 to-indigo-500 rounded-2xl blur opacity-60 group-hover:opacity-90 transition duration-500" />
                       <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
-                        <img
+                        <img loading="lazy"
                           src={numiProfile}
                           alt="Selección de perfil de NumiApp"
                           className="w-full h-48 object-cover object-top rounded-xl"
@@ -836,7 +860,7 @@ function App() {
                     <div className="relative group">
                       <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-lime-500 rounded-2xl blur opacity-60 group-hover:opacity-90 transition duration-500" />
                       <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
-                        <img
+                        <img loading="lazy"
                           src={numiSubjects}
                           alt="Materias educativas de NumiApp"
                           className="w-full h-48 object-cover object-top rounded-xl"
@@ -862,14 +886,17 @@ function App() {
                     <span className="min-w-0 break-words">Comunidad Aeronáutica En Red</span>
                   </h3>
                   <p className="text-gray-200 text-lg leading-relaxed">
-                    Comunidad Aeronáutica En Red es una aplicación Android pensada para consultar aeródromos, frecuencias, servicios, combustibles, enlaces oficiales y documentación operativa desde una experiencia clara y rápida.
+                    Comunidad Aeronáutica En Red es una aplicación móvil para iOS y Android, pensada para consultar aeródromos, frecuencias, servicios, combustibles, enlaces oficiales y documentación operativa desde una experiencia clara y rápida.
                   </p>
                   <p className="text-gray-300 text-base leading-relaxed">
                     Centraliza herramientas como METAR en vivo, plan de vuelo, tráfico, NOTAM, biblioteca y accesos de comunidad para pilotos, estudiantes y entusiastas de la aviación.
                   </p>
+                  <p className="text-gray-300 text-base leading-relaxed">
+                    Diseñé y desarrollé la aplicación móvil junto con su backend para reunir información y herramientas de uso aeronáutico en una experiencia accesible desde el celular.
+                  </p>
 
                   <div className="flex flex-wrap gap-3">
-                    {['React Native', 'Expo', 'TypeScript', 'Android', 'Play Store'].map((tech) => (
+                    {['React Native', 'Expo', 'TypeScript', 'API REST', 'iOS', 'Android'].map((tech) => (
                       <span
                         key={tech}
                         className="px-4 py-2 bg-gradient-to-r from-sky-500/20 to-emerald-500/20 text-sky-100 rounded-full text-sm border border-sky-400/30 hover:scale-105 transition-transform duration-300"
@@ -894,20 +921,20 @@ function App() {
                   <div className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-r from-sky-400 to-emerald-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
                     <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500 overflow-hidden">
-                      <img
+                      <img loading="lazy"
                         src={comunidadAeroScreen1}
                         alt="Captura de pantalla Comunidad Aeronáutica En Red"
                         className="w-full h-64 object-cover rounded-xl"
                       />
                       <div className="absolute left-5 bottom-5 flex items-center gap-3 rounded-2xl bg-slate-950/80 p-3 border border-white/15 backdrop-blur-md">
-                        <img
+                        <img loading="lazy"
                           src={comunidadAeroIcon}
                           alt="Icono Comunidad Aeronáutica En Red"
                           className="w-14 h-14 rounded-2xl object-cover"
                         />
                         <div>
                           <p className="text-white font-semibold leading-tight">Comunidad Aeronáutica</p>
-                          <p className="text-sky-200 text-sm">Disponible en Google Play</p>
+                          <p className="text-sky-200 text-sm">Disponible en iOS y Android</p>
                         </div>
                       </div>
                     </div>
@@ -917,7 +944,7 @@ function App() {
                     <div className="relative group">
                       <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-2xl blur opacity-60 group-hover:opacity-90 transition duration-500" />
                       <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
-                        <img
+                        <img loading="lazy"
                           src={comunidadAeroScreen2}
                           alt="Vista de herramientas de Comunidad Aeronáutica En Red"
                           className="w-full h-40 object-cover rounded-xl"
@@ -927,7 +954,7 @@ function App() {
                     <div className="relative group">
                       <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-lime-500 rounded-2xl blur opacity-60 group-hover:opacity-90 transition duration-500" />
                       <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
-                        <img
+                        <img loading="lazy"
                           src={comunidadAeroScreen3}
                           alt="Vista de comunidad de Comunidad Aeronáutica En Red"
                           className="w-full h-40 object-cover rounded-xl"
@@ -935,6 +962,32 @@ function App() {
                       </div>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Caso de estudio destacado: OfiAI */}
+            <div
+              id="ofiai"
+              className={`scroll-mt-24 bg-white/5 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-white/10 hover:bg-white/10 transition-all duration-500 hover:scale-[1.01] mb-12 ${visibleSections.has('projects') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
+            >
+              <div className="grid lg:grid-cols-2 gap-8 items-center">
+                <div className="space-y-5">
+                  <span className="inline-flex items-center rounded-full bg-purple-400/15 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-purple-200 border border-purple-300/20">Caso destacado · Marketplace con IA</span>
+                  <h3 className="text-3xl sm:text-4xl font-bold text-white">OfiAI</h3>
+                  <p className="text-gray-200 text-lg leading-relaxed">OfiAI conecta organizaciones y profesionales en un marketplace digital, con herramientas de inteligencia artificial para acompañar la búsqueda y gestión de oportunidades.</p>
+                  <p className="text-gray-300 text-base leading-relaxed">Desarrollé una experiencia con flujos diferenciados por perfil, tableros de gestión y funciones asistidas por IA, integrando la interfaz, los servicios y la persistencia de datos.</p>
+                  <div className="flex flex-wrap gap-3">
+                    {['TypeScript', 'Node.js', 'Express', 'Firebase', 'Firestore', 'Groq'].map((tech) => <span key={tech} className="px-4 py-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-100 rounded-full text-sm border border-purple-400/30">{tech}</span>)}
+                  </div>
+                  <div className="flex flex-wrap gap-3 pt-2">
+                    <a href="https://ofiai.pages.dev" target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-7 py-4 bg-gradient-to-r from-purple-500 to-pink-600 text-white rounded-full hover:scale-105 transition-transform shadow-lg shadow-purple-500/25"><ExternalLink className="w-5 h-5 mr-2" />Ver demo</a>
+                    <a href="https://github.com/roomii13/OfiAI" target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-7 py-4 bg-white/10 text-white rounded-full border border-white/15 hover:bg-white/15 transition-colors"><Github className="w-5 h-5 mr-2" />Ver código</a>
+                  </div>
+                </div>
+                <div className="relative group overflow-hidden rounded-2xl border border-white/10 bg-gray-900 p-1">
+                  <img loading="lazy" src={ofiaiDashboard} alt="Captura de la demo profesional de OfiAI con datos ficticios" className="w-full h-64 sm:h-80 object-cover object-top rounded-xl" />
+                  <span className="absolute bottom-4 left-4 rounded-full bg-slate-950/85 px-3 py-2 text-xs text-amber-100 border border-amber-300/20">Demo visual · datos ficticios · solo lectura</span>
                 </div>
               </div>
             </div>
@@ -984,7 +1037,7 @@ function App() {
                   <div className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500" />
                     <div className="relative bg-gray-900 rounded-2xl p-1 transform group-hover:scale-105 transition-transform duration-500">
-                      <img 
+                      <img loading="lazy"
                         src={vlsmCaptura} 
                         alt="Captura Calculadora VLSM" 
                         className="w-full h-48 object-cover rounded-xl"
@@ -1036,12 +1089,12 @@ function App() {
               ¡Trabajemos Juntos!
             </h2>
             <p className="text-xl text-gray-200 mb-12 max-w-2xl mx-auto">
-              ¿Tienes un proyecto en mente? Me encantaría escuchar tus ideas y crear algo increíble juntos.
+              Estoy abierta a oportunidades laborales, colaboraciones y nuevos proyectos. Si buscas a alguien que pueda llevar una idea desde el concepto hasta una solución digital, escribime.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <a 
-                href="mailto:rom-cel@live.com.ar"
+                href="mailto:romina.celis33@gmail.com"
                 className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-full hover:from-pink-600 hover:to-purple-700 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-pink-500/25 text-lg"
               >
                 <Mail className="w-6 h-6 mr-3" />
@@ -1049,7 +1102,7 @@ function App() {
               </a>
               
               <a 
-                href="https://wa.me/5492954446198" 
+                href="https://wa.me/5492954744019"
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-full hover:from-green-600 hover:to-emerald-700 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-green-500/25 text-lg"
@@ -1057,6 +1110,11 @@ function App() {
                 <MessageCircle className="w-6 h-6 mr-3" />
                 WhatsApp
               </a>
+            </div>
+            <p className="text-sm text-gray-300 mt-6">romina.celis33@gmail.com <span className="mx-2 text-purple-300">·</span> +54 9 2954 744019</p>
+            <div className="flex justify-center gap-5 mt-5">
+              <a href="https://github.com/roomii13" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors"><Github className="w-5 h-5" /> GitHub</a>
+              <a href="https://www.linkedin.com/in/romi-celis/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors"><Linkedin className="w-5 h-5" /> LinkedIn</a>
             </div>
           </div>
         </section>
