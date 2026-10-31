@@ -1118,10 +1118,7 @@ function App() {
               </a>
             </div>
             <p className="text-sm text-gray-300 mt-6">{CONTACT_EMAIL} <span className="mx-2 text-purple-300">·</span> {WHATSAPP_DISPLAY}</p>
-            <div className="flex justify-center gap-5 mt-5">
-              <a href="https://github.com/roomii13" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors"><Github className="w-5 h-5" /> GitHub</a>
-              <a href="https://www.linkedin.com/in/romi-celis/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors"><Linkedin className="w-5 h-5" /> LinkedIn</a>
-            </div>
+           
           </div>
         </section>
       </main>
