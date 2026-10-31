@@ -1116,9 +1116,7 @@ function App() {
                 <MessageCircle className="w-6 h-6 mr-3 flex-shrink-0" />
                 <span><span className="block">WhatsApp</span><span className="block text-sm font-normal">{WHATSAPP_DISPLAY}</span></span>
               </a>
-            </div>
-            <p className="text-sm text-gray-300 mt-6">{CONTACT_EMAIL} <span className="mx-2 text-purple-300">·</span> {WHATSAPP_DISPLAY}</p>
-           
+            </div>    
           </div>
         </section>
       </main>
