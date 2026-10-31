@@ -28,6 +28,10 @@ import comunidadAeroScreen2 from './assets/comunidad-aeronautica-screen-2.png';
 import comunidadAeroScreen3 from './assets/comunidad-aeronautica-screen-3.png';
 import CalculadoraVLSM from './components/CalculadoraVLSM';
 
+const CONTACT_EMAIL = 'romina.celis33@gmail.com';
+const WHATSAPP_DISPLAY = '+54 9 2954 744019';
+const WHATSAPP_LINK = 'https://wa.me/5492954744019';
+
 function App() {
   const [isVisible, setIsVisible] = useState(false);
   const [scrollY, setScrollY] = useState(0);
@@ -132,9 +136,10 @@ function App() {
             </div>
             <div className="flex items-center space-x-3 sm:space-x-4">
               <a 
-                href="https://wa.me/5492954744019"
+                href={WHATSAPP_LINK}
                 target="_blank" 
                 rel="noopener noreferrer"
+                aria-label={`WhatsApp: ${WHATSAPP_DISPLAY}`}
                 className="p-2 rounded-full bg-green-500/20 hover:bg-green-500/40 transition-all duration-300 hover:scale-110 backdrop-blur-sm"
               >
                 <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-400" />
@@ -222,11 +227,11 @@ function App() {
                   </div>
                   <div className="flex flex-col sm:flex-row gap-4">
                     <a 
-                      href="mailto:romina.celis33@gmail.com"
+                      href={`mailto:${CONTACT_EMAIL}`}
                       className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-full hover:from-pink-600 hover:to-purple-700 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-pink-500/25"
                     >
-                      <Mail className="w-5 h-5 mr-2" />
-                      Contáctame
+                      <Mail className="w-5 h-5 mr-2 flex-shrink-0" />
+                      <span className="text-left"><span className="block">Contáctame</span><span className="block text-xs opacity-90">{CONTACT_EMAIL}</span></span>
                     </a>
                     <a
                       href="/CV_Romina_Celis2026-rc.pdf"
@@ -1094,24 +1099,25 @@ function App() {
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <a 
-                href="mailto:romina.celis33@gmail.com"
-                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-full hover:from-pink-600 hover:to-purple-700 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-pink-500/25 text-lg"
+                href={`mailto:${CONTACT_EMAIL}`}
+                className="inline-flex max-w-full items-center px-6 sm:px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-full hover:from-pink-600 hover:to-purple-700 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-pink-500/25 text-lg text-left"
               >
-                <Mail className="w-6 h-6 mr-3" />
-                Envíame un Email
+                <Mail className="w-6 h-6 mr-3 flex-shrink-0" />
+                <span className="min-w-0"><span className="block">Envíame un Email</span><span className="block break-all text-sm font-normal">{CONTACT_EMAIL}</span></span>
               </a>
               
               <a 
-                href="https://wa.me/5492954744019"
+                href={WHATSAPP_LINK}
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-full hover:from-green-600 hover:to-emerald-700 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-green-500/25 text-lg"
+                aria-label={`Contactar por WhatsApp al ${WHATSAPP_DISPLAY}`}
+                className="inline-flex max-w-full items-center px-6 sm:px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-full hover:from-green-600 hover:to-emerald-700 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-green-500/25 text-lg text-left"
               >
-                <MessageCircle className="w-6 h-6 mr-3" />
-                WhatsApp
+                <MessageCircle className="w-6 h-6 mr-3 flex-shrink-0" />
+                <span><span className="block">WhatsApp</span><span className="block text-sm font-normal">{WHATSAPP_DISPLAY}</span></span>
               </a>
             </div>
-            <p className="text-sm text-gray-300 mt-6">romina.celis33@gmail.com <span className="mx-2 text-purple-300">·</span> +54 9 2954 744019</p>
+            <p className="text-sm text-gray-300 mt-6">{CONTACT_EMAIL} <span className="mx-2 text-purple-300">·</span> {WHATSAPP_DISPLAY}</p>
             <div className="flex justify-center gap-5 mt-5">
               <a href="https://github.com/roomii13" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors"><Github className="w-5 h-5" /> GitHub</a>
               <a href="https://www.linkedin.com/in/romi-celis/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors"><Linkedin className="w-5 h-5" /> LinkedIn</a>
